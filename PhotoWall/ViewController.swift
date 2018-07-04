@@ -13,7 +13,9 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var videoPlayer: AVPlayer!
+    var colPlayer: AVPlayer!
+    var coryPlayer: AVPlayer!
+    var angiePlayer: AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +23,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
 //        sceneView.showsStatistics = true
         
-        if let url = Bundle.main.url(forResource: "Col", withExtension: "mp4", subdirectory: "art.scnassets") {
-            videoPlayer = AVPlayer(url: url)
-            
-            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: videoPlayer.currentItem, queue: nil) { _ in
-                self.videoPlayer.seek(to: .zero)
-                self.videoPlayer.play()
-            }
+        self.colPlayer = loadPlayer(name: "Col")
+        self.coryPlayer = loadPlayer(name: "Cory")
+        self.angiePlayer = loadPlayer(name: "Angie")
+        
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: colPlayer.currentItem, queue: nil) { _ in
+            self.colPlayer.seek(to: .zero)
+            self.colPlayer.play()
         }
+        
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: coryPlayer.currentItem, queue: nil) { _ in
+            self.coryPlayer.seek(to: .zero)
+            self.coryPlayer.play()
+        }
+        
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: angiePlayer.currentItem, queue: nil) { _ in
+            self.angiePlayer.seek(to: .zero)
+            self.angiePlayer.play()
+        }
+    }
+    
+    func loadPlayer(name: String) -> AVPlayer? {
+        if let url = Bundle.main.url(forResource: name, withExtension: "mp4", subdirectory: "art.scnassets") {
+            return AVPlayer(url: url)
+        }
+        return nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,20 +74,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
      
-        if let imageAnchor = anchor as? ARImageAnchor {
-            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width,
-                                 height: imageAnchor.referenceImage.physicalSize.height)
+        if let imageAnchor = anchor as? ARImageAnchor, let imageAnchorName = imageAnchor.referenceImage.name {
+            if let player = player(for: imageAnchorName) {
+                let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width,
+                                     height: imageAnchor.referenceImage.physicalSize.height)
                 
-            plane.firstMaterial?.diffuse.contents = self.videoPlayer
-            self.videoPlayer.play()
-            
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            node.addChildNode(planeNode)
+                plane.firstMaterial?.diffuse.contents = player
+                player.play()
+                
+                let planeNode = SCNNode(geometry: plane)
+                planeNode.eulerAngles.x = -.pi / 2
+                
+                node.addChildNode(planeNode)
+            }
         }
 
         return node
+    }
+    
+    func player(for name: String) -> AVPlayer? {
+        switch name {
+        case "Col":
+            return colPlayer
+        case "Cory":
+            return coryPlayer
+        case "Angie":
+            return angiePlayer
+        default:
+            return nil
+        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {

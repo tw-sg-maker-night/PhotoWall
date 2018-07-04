@@ -5,7 +5,13 @@
   },
   "resources" : [
     {
-      "filename" : "Join_Landscape.arreferenceimage"
+      "filename" : "Angie.arreferenceimage"
+    },
+    {
+      "filename" : "Col.arreferenceimage"
+    },
+    {
+      "filename" : "Cory.arreferenceimage"
     }
   ]
 }
