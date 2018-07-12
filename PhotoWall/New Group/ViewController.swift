@@ -13,9 +13,9 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    var colPlayer: AVPlayer!
-    var coryPlayer: AVPlayer!
-    var angiePlayer: AVPlayer!
+    
+    let names = ["Col", "Cory", "Angie"]
+    var players: [String: AVPlayer] = [:]
     
     @IBAction func addClicked() {
         sceneView.session.pause()
@@ -26,25 +26,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         
         sceneView.delegate = self
-//        sceneView.showsStatistics = true
         
-        self.colPlayer = loadPlayer(name: "Col")
-        self.coryPlayer = loadPlayer(name: "Cory")
-        self.angiePlayer = loadPlayer(name: "Angie")
+        for name in names {
+            self.players[name] = loadPlayer(name: name)
+        }
         
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: colPlayer.currentItem, queue: nil) { _ in
-            self.colPlayer.seek(to: .zero)
-            self.colPlayer.play()
-        }
-
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: coryPlayer.currentItem, queue: nil) { _ in
-            self.coryPlayer.seek(to: .zero)
-            self.coryPlayer.play()
-        }
-
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: angiePlayer.currentItem, queue: nil) { _ in
-            self.angiePlayer.seek(to: .zero)
-            self.angiePlayer.play()
+        for player in players.values {
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { _ in
+                player.seek(to: .zero)
+                player.play()
+            }
         }
     }
     
@@ -64,7 +55,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         configuration.trackingImages = referencesImages
-        configuration.maximumNumberOfTrackedImages = 2
+        configuration.maximumNumberOfTrackedImages = players.count
         
         sceneView.session.run(configuration)
     }
@@ -80,7 +71,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let node = SCNNode()
 
         if let imageAnchor = anchor as? ARImageAnchor, let imageAnchorName = imageAnchor.referenceImage.name {
-            if let player = player(for: imageAnchorName) {
+            if let player = players[imageAnchorName] {
                 let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width,
                                      height: imageAnchor.referenceImage.physicalSize.height)
 
@@ -95,19 +86,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
 
         return node
-    }
-    
-    func player(for name: String) -> AVPlayer? {
-        switch name {
-        case "Col":
-            return colPlayer
-        case "Cory":
-            return coryPlayer
-        case "Angie":
-            return angiePlayer
-        default:
-            return nil
-        }
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
