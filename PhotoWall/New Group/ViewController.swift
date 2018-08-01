@@ -17,6 +17,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var coryPlayer: AVPlayer!
     var angiePlayer: AVPlayer!
     
+    @IBAction func addClicked() {
+        sceneView.session.pause()
+        performSegue(withIdentifier: "ShowCamera", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +36,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.colPlayer.seek(to: .zero)
             self.colPlayer.play()
         }
-        
+
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: coryPlayer.currentItem, queue: nil) { _ in
             self.coryPlayer.seek(to: .zero)
             self.coryPlayer.play()
         }
-        
+
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: angiePlayer.currentItem, queue: nil) { _ in
             self.angiePlayer.seek(to: .zero)
             self.angiePlayer.play()
@@ -73,18 +78,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
-     
+
         if let imageAnchor = anchor as? ARImageAnchor, let imageAnchorName = imageAnchor.referenceImage.name {
             if let player = player(for: imageAnchorName) {
                 let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width,
                                      height: imageAnchor.referenceImage.physicalSize.height)
-                
+
                 plane.firstMaterial?.diffuse.contents = player
                 player.play()
-                
+
                 let planeNode = SCNNode(geometry: plane)
                 planeNode.eulerAngles.x = -.pi / 2
-                
+
                 node.addChildNode(planeNode)
             }
         }

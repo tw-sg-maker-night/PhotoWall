@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF0CBBD82111D6650067E9AB /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0CBBD72111D6650067E9AB /* CameraController.swift */; };
 		EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900D920E3AFF30033B63B /* AppDelegate.swift */; };
 		EFA900DC20E3AFF30033B63B /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900DB20E3AFF30033B63B /* art.scnassets */; };
 		EFA900DE20E3AFF30033B63B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900DD20E3AFF30033B63B /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF0CBBD72111D6650067E9AB /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		EFA900D620E3AFF30033B63B /* PhotoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900D920E3AFF30033B63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA900DB20E3AFF30033B63B /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -76,6 +78,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF0CBBD92111D6730067E9AB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EFA900DD20E3AFF30033B63B /* ViewController.swift */,
+				EF0CBBD72111D6650067E9AB /* CameraController.swift */,
+			);
+			name = Controllers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		EFA900CD20E3AFF20033B63B = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +111,9 @@
 		EFA900D820E3AFF30033B63B /* PhotoWall */ = {
 			isa = PBXGroup;
 			children = (
+				EF0CBBD92111D6730067E9AB /* Controllers */,
 				EFA900D920E3AFF30033B63B /* AppDelegate.swift */,
 				EFA900DB20E3AFF30033B63B /* art.scnassets */,
-				EFA900DD20E3AFF30033B63B /* ViewController.swift */,
 				EFA900DF20E3AFF30033B63B /* Main.storyboard */,
 				EFA900E220E3AFF90033B63B /* Assets.xcassets */,
 				EFA900E420E3AFF90033B63B /* LaunchScreen.storyboard */,
@@ -260,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0CBBD82111D6650067E9AB /* CameraController.swift in Sources */,
 				EFA900DE20E3AFF30033B63B /* ViewController.swift in Sources */,
 				EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */,
 			);
