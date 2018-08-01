@@ -59,7 +59,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return
         }
         configuration.trackingImages = referencesImages
-        configuration.maximumNumberOfTrackedImages = 1
+        configuration.maximumNumberOfTrackedImages = 2
         
         sceneView.session.run(configuration)
     }
