@@ -15,7 +15,6 @@ class CameraController: UIViewController {
     @IBOutlet var previewView: UIView!
     
     var session: AVCaptureSession!
-//    var videoOutput: AVCaptureVideoDataOutput!
     var videoOutput: AVCaptureMovieFileOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
@@ -30,30 +29,38 @@ class CameraController: UIViewController {
         super.viewWillAppear(animated)
         
         do {
+            // Setup video input
             let input = try AVCaptureDeviceInput(device: AVCaptureDevice.default(for: AVMediaType.video)!)
             if session.canAddInput(input) {
                 session.addInput(input)
             }
+            
+            // Setup preview
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             videoPreviewLayer.videoGravity = .resizeAspectFill
             videoPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRight
             previewView.layer.addSublayer(videoPreviewLayer!)
             
-//            videoOutput = AVCaptureVideoDataOutput()
-//            videoOutput.videoSettings = videoOutput.recommendedVideoSettings(forVideoCodecType: .h264, assetWriterOutputFileType: .m4v) as! [String: Any]?
-//            videoOutput.alwaysDiscardsLateVideoFrames = true
-//            if session.canAddOutput(videoOutput) {
-//                session.addOutput(videoOutput)
-//            }
-            
+            // Setup output
+            videoOutput = AVCaptureMovieFileOutput()
+            if session.canAddOutput(videoOutput) {
+                session.addOutput(videoOutput)
+            }
         } catch let error as NSError {
             print(error.localizedDescription)
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let bounds: CGRect = previewView.layer.bounds
+        videoPreviewLayer.videoGravity = .resizeAspectFill
+        videoPreviewLayer.bounds = bounds
+        videoPreviewLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoPreviewLayer!.frame = previewView.bounds
         session.startRunning()
     }
     
@@ -61,16 +68,30 @@ class CameraController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    @IBAction func startRecording() {
-        print("startRecording")    
-    }
-    
-    @IBAction func stopRecording() {
-        print("stopRecording")
-        backClicked()
+    @IBAction func startStopRecording() {
+        if videoOutput.isRecording {
+            print("stopRecording")
+            videoOutput.stopRecording()
+        } else {
+            print("startRecording")
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let fileUrl = paths[0].appendingPathComponent("output.mov")
+            try? FileManager.default.removeItem(at: fileUrl)
+            videoOutput.startRecording(to: fileUrl, recordingDelegate: self)
+        }
     }
     
     @IBAction func takePhoto() {
         print("takePhoto")
     }
+}
+
+extension CameraController: AVCaptureFileOutputRecordingDelegate {
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        if error == nil {
+            UISaveVideoAtPathToSavedPhotosAlbum(outputFileURL.path, nil, nil, nil)
+        }
+    }
+    
 }
