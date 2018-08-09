@@ -45,6 +45,12 @@ class CameraController: UIViewController {
             videoOutput = AVCaptureMovieFileOutput()
             if session.canAddOutput(videoOutput) {
                 session.addOutput(videoOutput)
+                if let connection = videoOutput.connection(with: .video) {
+//                    videoOutput.setRecordsVideoOrientationAndMirroringChangesAsMetadataTrack(true, for: connection)
+//                    videoOutput.setOutputSettings([AVVideoCodecKey: AVVideoCodecType.hevc], for: connection)
+                    connection.videoOrientation = .landscapeRight
+                    connection.preferredVideoStabilizationMode = .standard
+                }
             }
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -88,9 +94,21 @@ class CameraController: UIViewController {
 
 extension CameraController: AVCaptureFileOutputRecordingDelegate {
     
-    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+    func fileOutput(_ output: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
+        print("fileOutput didStartRecordingTo: \(fileURL.absoluteString)")
+    }
+    
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo fileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if error == nil {
-            UISaveVideoAtPathToSavedPhotosAlbum(outputFileURL.path, nil, nil, nil)
+            print("fileOutput didFinishRecordingTo: \(fileURL.absoluteString)")
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(fileURL.path) {
+                print("video compatible with photo library")
+                UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, nil, nil, nil)
+            } else {
+                print("Video NOT compatible with photo library!")
+            }
+        } else {
+            print("fileOutput - error: \(error!.localizedDescription)")
         }
     }
     
