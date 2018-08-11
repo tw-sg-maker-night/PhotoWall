@@ -42,19 +42,10 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     }
     
     func loadWallAssets() {
-        self.wallAssets = []
-        wallAssets.append(WallAsset(
-            identifier: "Angie",
-            imageUrl: Bundle.main.url(forResource: "Angie", withExtension: "png")!,
-            videoUrl: Bundle.main.url(forResource: "Angie", withExtension: "m4v")!,
-            width: 0.17
-        ))
-        wallAssets.append(WallAsset(
-            identifier: "Cory",
-            imageUrl: Bundle.main.url(forResource: "Cory", withExtension: "png")!,
-            videoUrl: Bundle.main.url(forResource: "Cory", withExtension: "m4v")!,
-            width: 0.17
-        ))
+        self.wallAssets = WallAssetStore().loadAssets()
+        for wallAsset in wallAssets {
+            print("WallAsset: \(wallAsset)")
+        }
     }
     
     func loadPlayer(for asset: WallAsset) -> AVPlayer? {

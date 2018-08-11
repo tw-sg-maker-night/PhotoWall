@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 import ARKit
 
-struct WallAsset {
+struct WallAsset: CustomStringConvertible {
     var identifier: String
     var imageUrl: URL
     var videoUrl: URL
-    var width: CGFloat
+    var width: Float
 
     func image() -> UIImage? {
         return UIImage(contentsOfFile: self.imageUrl.path)
@@ -25,7 +25,7 @@ struct WallAsset {
             return nil
         }
 
-        let referenceImage = ARReferenceImage(image.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: self.width)
+        let referenceImage = ARReferenceImage(image.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(self.width))
         referenceImage.name = self.identifier
         return referenceImage
     }
