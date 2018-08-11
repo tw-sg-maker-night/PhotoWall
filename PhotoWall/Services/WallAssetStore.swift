@@ -40,6 +40,18 @@ class WallAssetStore {
         }.compactMap { $0 }
     }
     
+    func storeVideo(_ url: URL, for name: String) {
+        let uuid = UUID().uuidString
+        let baseDir = documentsUrl.appendingPathComponent(name)
+        let newVideoUrl = baseDir.appendingPathComponent("\(uuid).\(url.pathExtension)")
+        print("storeVideo - to: \(newVideoUrl.absoluteString)")
+        try! fileManager.copyItem(at: url, to: newVideoUrl)
+        if var manifest = loadManifest(for: name) {
+            manifest.setVideoFileName(fileName: newVideoUrl.lastPathComponent)
+            saveManifest(manifest, for: name)
+        }
+    }
+    
     private func copyFilesFor(name: String) throws {
         let baseDir = documentsUrl.appendingPathComponent(name)
         try fileManager.createDirectory(at: baseDir, withIntermediateDirectories: false, attributes: nil)
@@ -75,7 +87,22 @@ class WallAssetStore {
         )
     }
     
+    private func loadManifest(for name: String) -> WallAssetManifest? {
+        let manifestUrl = documentsUrl.appendingPathComponent("\(name)/manifest.json")
+        return loadManifest(from: manifestUrl)
+    }
+    
     private func loadManifest(from url: URL) -> WallAssetManifest? {
         return try? JSONDecoder().decode(WallAssetManifest.self, from: Data(contentsOf: url))
+    }
+    
+    private func saveManifest(_ manifest: WallAssetManifest, for name: String) {
+        let manifestData = try? JSONEncoder().encode(manifest)
+        print("Save manifest to: \(manifestUrl(for: name).absoluteString)")
+        try? manifestData?.write(to: manifestUrl(for: name))
+    }
+    
+    private func manifestUrl(for name: String) -> URL {
+        return documentsUrl.appendingPathComponent("\(name)/manifest.json")
     }
 }

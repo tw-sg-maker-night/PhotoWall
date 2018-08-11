@@ -26,19 +26,6 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         
         sceneView.delegate = self
-        
-        loadWallAssets()
-
-        for asset in wallAssets {
-            self.players[asset.identifier] = loadPlayer(for: asset)
-        }
-        
-        for player in players.values {
-            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { _ in
-                player.seek(to: .zero)
-                player.play()
-            }
-        }
     }
     
     func loadWallAssets() {
@@ -54,6 +41,19 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        loadWallAssets()
+        
+        for asset in wallAssets {
+            self.players[asset.identifier] = loadPlayer(for: asset)
+        }
+        
+        for player in players.values {
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: nil) { _ in
+                player.seek(to: .zero)
+                player.play()
+            }
+        }
         
         let configuration = ARImageTrackingConfiguration()
         

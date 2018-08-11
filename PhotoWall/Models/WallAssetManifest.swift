@@ -18,4 +18,12 @@ struct WallAssetManifest: Codable, CustomStringConvertible {
         self.videoFileName = videoFileName
         self.imageWidth = imageWidth
     }
+    
+    mutating func setImageFileName(fileName: String) {
+        self.imageFileName = fileName
+    }
+    
+    mutating func setVideoFileName(fileName: String) {
+        self.videoFileName = fileName
+    }
 }

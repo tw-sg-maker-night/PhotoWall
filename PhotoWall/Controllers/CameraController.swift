@@ -100,13 +100,8 @@ extension CameraController: AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo fileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if error == nil {
-            print("fileOutput didFinishRecordingTo: \(fileURL.absoluteString)")
-            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(fileURL.path) {
-                print("video compatible with photo library")
-                UISaveVideoAtPathToSavedPhotosAlbum(fileURL.path, nil, nil, nil)
-            } else {
-                print("Video NOT compatible with photo library!")
-            }
+            WallAssetStore().storeVideo(fileURL, for: "Cory")
+            backClicked()
         } else {
             print("fileOutput - error: \(error!.localizedDescription)")
         }
