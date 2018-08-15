@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		005F9D222C3B318E0B5B34EB /* Pods_PhotoWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */; };
+		07D1610E3D980B29E83413BF /* Pods_PhotoWallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174A236BC3F7A05A32242F68 /* Pods_PhotoWallUITests.framework */; };
+		B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */; };
 		EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEE9211BC1D10069F83A /* WallAsset.swift */; };
 		EF24FEF2211BCB4E0069F83A /* Cory.png in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEEE211BCB4C0069F83A /* Cory.png */; };
 		EF24FEF4211BCB4E0069F83A /* Angie.png in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEF0211BCB4D0069F83A /* Angie.png */; };
@@ -17,6 +20,7 @@
 		EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */; };
 		EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FF01211D67160069F83A /* WallAssetManifest.swift */; };
 		EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */; };
+		EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */; };
 		EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900D920E3AFF30033B63B /* AppDelegate.swift */; };
 		EFA900E120E3AFF30033B63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA900DF20E3AFF30033B63B /* Main.storyboard */; };
 		EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E220E3AFF90033B63B /* Assets.xcassets */; };
@@ -43,6 +47,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		174A236BC3F7A05A32242F68 /* Pods_PhotoWallUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoWallUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoWallTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE5B33CF5736755B990573D /* Pods-PhotoWall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWall.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall.release.xcconfig"; sourceTree = "<group>"; };
+		64517FDF6CF3B3B61C6BEC89 /* Pods-PhotoWallTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests.release.xcconfig"; sourceTree = "<group>"; };
+		882547E2FDA9B0D30A4BBA05 /* Pods-PhotoWall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWall.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall.debug.xcconfig"; sourceTree = "<group>"; };
+		C4A7193B75A71DD1854CCD22 /* Pods-PhotoWallUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EE3804261C981A2DB03B8DB8 /* Pods-PhotoWallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF24FEE9211BC1D10069F83A /* WallAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAsset.swift; sourceTree = "<group>"; };
 		EF24FEEE211BCB4C0069F83A /* Cory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cory.png; sourceTree = "<group>"; };
 		EF24FEF0211BCB4D0069F83A /* Angie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Angie.png; sourceTree = "<group>"; };
@@ -53,6 +65,7 @@
 		EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetStore.swift; sourceTree = "<group>"; };
 		EF24FF01211D67160069F83A /* WallAssetManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetManifest.swift; sourceTree = "<group>"; };
 		EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStringConvertable.swift; sourceTree = "<group>"; };
+		EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
 		EFA900D620E3AFF30033B63B /* PhotoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900D920E3AFF30033B63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA900E020E3AFF30033B63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +78,7 @@
 		EFA900F720E3AFFA0033B63B /* PhotoWallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900FB20E3AFFA0033B63B /* PhotoWallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallUITests.swift; sourceTree = "<group>"; };
 		EFA900FD20E3AFFA0033B63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005F9D222C3B318E0B5B34EB /* Pods_PhotoWall.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,20 +102,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D1610E3D980B29E83413BF /* Pods_PhotoWallUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6BD483AE6D07D547211A2D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				882547E2FDA9B0D30A4BBA05 /* Pods-PhotoWall.debug.xcconfig */,
+				4DE5B33CF5736755B990573D /* Pods-PhotoWall.release.xcconfig */,
+				EE3804261C981A2DB03B8DB8 /* Pods-PhotoWallTests.debug.xcconfig */,
+				64517FDF6CF3B3B61C6BEC89 /* Pods-PhotoWallTests.release.xcconfig */,
+				C4A7193B75A71DD1854CCD22 /* Pods-PhotoWallUITests.debug.xcconfig */,
+				EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EF0CBBD92111D6730067E9AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				EF24FEF7211C3B160069F83A /* CameraController.swift */,
 				EF24FEF6211C3B160069F83A /* PhotoWallController.swift */,
 			);
-			name = Controllers;
-			path = "New Group";
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		EF24FEE8211BC10C0069F83A /* Models */ = {
@@ -124,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */,
+				EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -168,6 +198,8 @@
 				EFA900EF20E3AFF90033B63B /* PhotoWallTests */,
 				EFA900FA20E3AFFA0033B63B /* PhotoWallUITests */,
 				EFA900D720E3AFF30033B63B /* Products */,
+				C6BD483AE6D07D547211A2D8 /* Pods */,
+				F59B4A6DE0B63CC295F994DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +249,16 @@
 			path = PhotoWallUITests;
 			sourceTree = "<group>";
 		};
+		F59B4A6DE0B63CC295F994DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */,
+				4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */,
+				174A236BC3F7A05A32242F68 /* Pods_PhotoWallUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,9 +266,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFA9010020E3AFFA0033B63B /* Build configuration list for PBXNativeTarget "PhotoWall" */;
 			buildPhases = (
+				6BF1C0A38600AFA721402501 /* [CP] Check Pods Manifest.lock */,
 				EFA900D220E3AFF30033B63B /* Sources */,
 				EFA900D320E3AFF30033B63B /* Frameworks */,
 				EFA900D420E3AFF30033B63B /* Resources */,
+				0A54C37D8B4294C167693C26 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,9 +285,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFA9010320E3AFFA0033B63B /* Build configuration list for PBXNativeTarget "PhotoWallTests" */;
 			buildPhases = (
+				9F50808D651D7B1131801F0A /* [CP] Check Pods Manifest.lock */,
 				EFA900E820E3AFF90033B63B /* Sources */,
 				EFA900E920E3AFF90033B63B /* Frameworks */,
 				EFA900EA20E3AFF90033B63B /* Resources */,
+				12010034CEDFB97E2341DD02 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,9 +305,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFA9010620E3AFFA0033B63B /* Build configuration list for PBXNativeTarget "PhotoWallUITests" */;
 			buildPhases = (
+				37057D64F7E9BD748802555F /* [CP] Check Pods Manifest.lock */,
 				EFA900F320E3AFFA0033B63B /* Sources */,
 				EFA900F420E3AFFA0033B63B /* Frameworks */,
 				EFA900F520E3AFFA0033B63B /* Resources */,
+				D4673C839CED2BC005BDE47E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,6 +395,123 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A54C37D8B4294C167693C26 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12010034CEDFB97E2341DD02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37057D64F7E9BD748802555F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoWallUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BF1C0A38600AFA721402501 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoWall-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F50808D651D7B1131801F0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoWallTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4673C839CED2BC005BDE47E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EFA900D220E3AFF30033B63B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -357,6 +522,7 @@
 				EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */,
 				EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */,
 				EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */,
+				EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */,
 				EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */,
 				EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */,
 			);
@@ -529,6 +695,7 @@
 		};
 		EFA9010120E3AFFA0033B63B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 882547E2FDA9B0D30A4BBA05 /* Pods-PhotoWall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -547,6 +714,7 @@
 		};
 		EFA9010220E3AFFA0033B63B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DE5B33CF5736755B990573D /* Pods-PhotoWall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -565,6 +733,7 @@
 		};
 		EFA9010420E3AFFA0033B63B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE3804261C981A2DB03B8DB8 /* Pods-PhotoWallTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -585,6 +754,7 @@
 		};
 		EFA9010520E3AFFA0033B63B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64517FDF6CF3B3B61C6BEC89 /* Pods-PhotoWallTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -605,6 +775,7 @@
 		};
 		EFA9010720E3AFFA0033B63B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4A7193B75A71DD1854CCD22 /* Pods-PhotoWallUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -624,6 +795,7 @@
 		};
 		EFA9010820E3AFFA0033B63B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

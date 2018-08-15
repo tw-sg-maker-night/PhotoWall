@@ -29,7 +29,8 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     }
     
     func loadWallAssets() {
-        self.wallAssets = WallAssetStore().loadAssets()
+//        self.wallAssets = WallAssetStore().loadAssets()
+        self.wallAssets = []
         for wallAsset in wallAssets {
             print("WallAsset: \(wallAsset)")
         }

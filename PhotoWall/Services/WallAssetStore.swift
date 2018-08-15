@@ -11,15 +11,16 @@ import Foundation
 class WallAssetStore {
     
     let fileManager: FileManager
-    let documentsUrl: URL
+    let baseUrl: URL
     
-    init(fileManager: FileManager = FileManager.default) {
+    init(groupId: String = "Singapore", fileManager: FileManager = FileManager.default) {
         self.fileManager = fileManager
-        self.documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        self.baseUrl = documentsUrl.appendingPathComponent(groupId)
     }
     
     func setupInitial() {
-        guard let existing = try? fileManager.contentsOfDirectory(atPath: self.documentsUrl.path), existing.count == 0 else {
+        guard let existing = try? fileManager.contentsOfDirectory(atPath: baseUrl.path), existing.count == 0 else {
             return
         }
         
@@ -33,17 +34,22 @@ class WallAssetStore {
     
     func loadAssets() -> [WallAsset] {
         print("loadAssets")
-        let folders = try! fileManager.contentsOfDirectory(atPath: self.documentsUrl.path)
+        let folders = try! fileManager.contentsOfDirectory(atPath: baseUrl.path)
         print("folders = \(folders.count)")
         return folders.map { folder in
-            loadWallAsset(from: self.documentsUrl.appendingPathComponent(folder))
+            loadWallAsset(from: baseUrl.appendingPathComponent(folder))
         }.compactMap { $0 }
+    }
+    
+    func createAssetDir(name: String) {
+        let assetDir = baseUrl.appendingPathComponent(name)
+        try? fileManager.createDirectory(at: assetDir, withIntermediateDirectories: true, attributes: nil)
     }
     
     func storeVideo(_ url: URL, for name: String) {
         let uuid = UUID().uuidString
-        let baseDir = documentsUrl.appendingPathComponent(name)
-        let newVideoUrl = baseDir.appendingPathComponent("\(uuid).\(url.pathExtension)")
+        let assetDir = baseUrl.appendingPathComponent(name)
+        let newVideoUrl = assetDir.appendingPathComponent("\(uuid).\(url.pathExtension)")
         print("storeVideo - to: \(newVideoUrl.absoluteString)")
         try! fileManager.copyItem(at: url, to: newVideoUrl)
         if var manifest = loadManifest(for: name) {
@@ -53,20 +59,20 @@ class WallAssetStore {
     }
     
     private func copyFilesFor(name: String) throws {
-        let baseDir = documentsUrl.appendingPathComponent(name)
-        try fileManager.createDirectory(at: baseDir, withIntermediateDirectories: false, attributes: nil)
+        let assetDir = baseUrl.appendingPathComponent(name)
+        createAssetDir(name: name)
         
         let imageUrl = Bundle.main.url(forResource: name, withExtension: "png")!
-        let newImageUrl = baseDir.appendingPathComponent("\(name).png")
+        let newImageUrl = assetDir.appendingPathComponent("\(name).png")
         try fileManager.copyItem(at: imageUrl, to: newImageUrl)
         
         let videoUrl = Bundle.main.url(forResource: name, withExtension: "m4v")!
-        let newVideoUrl = baseDir.appendingPathComponent("\(name).m4v")
+        let newVideoUrl = assetDir.appendingPathComponent("\(name).m4v")
         try fileManager.copyItem(at: videoUrl, to: newVideoUrl)
         
         let manifest = WallAssetManifest(imageFileName: imageUrl.lastPathComponent, videoFileName: videoUrl.lastPathComponent, imageWidth: 0.17)
         let manifestData = try? JSONEncoder().encode(manifest)
-        let newManifestUrl = baseDir.appendingPathComponent("manifest.json")
+        let newManifestUrl = assetDir.appendingPathComponent("manifest.json")
         try manifestData?.write(to: newManifestUrl)
     }
     
@@ -88,7 +94,7 @@ class WallAssetStore {
     }
     
     private func loadManifest(for name: String) -> WallAssetManifest? {
-        let manifestUrl = documentsUrl.appendingPathComponent("\(name)/manifest.json")
+        let manifestUrl = baseUrl.appendingPathComponent("\(name)/manifest.json")
         return loadManifest(from: manifestUrl)
     }
     
@@ -102,7 +108,7 @@ class WallAssetStore {
         try? manifestData?.write(to: manifestUrl(for: name))
     }
     
-    private func manifestUrl(for name: String) -> URL {
-        return documentsUrl.appendingPathComponent("\(name)/manifest.json")
+    func manifestUrl(for name: String) -> URL {
+        return baseUrl.appendingPathComponent("\(name)/manifest.json")
     }
 }
