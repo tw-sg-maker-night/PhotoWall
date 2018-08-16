@@ -19,6 +19,8 @@
 		EF3F6A2D2125B81300498C00 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF3F6A2C2125B81300498C00 /* Secrets.plist */; };
 		EF3F6A2F2125BFA700498C00 /* AppConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */; };
 		EF3F6A312125BFF400498C00 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A302125BFF400498C00 /* AppConfig.swift */; };
+		EF3F6A332125C16D00498C00 /* LibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A322125C16D00498C00 /* LibraryController.swift */; };
+		EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A352125CCA200498C00 /* AssetCell.swift */; };
 		EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */; };
 		EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */; };
 		EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900D920E3AFF30033B63B /* AppDelegate.swift */; };
@@ -64,6 +66,8 @@
 		EF3F6A2C2125B81300498C00 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigLoader.swift; sourceTree = "<group>"; };
 		EF3F6A302125BFF400498C00 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		EF3F6A322125C16D00498C00 /* LibraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryController.swift; sourceTree = "<group>"; };
+		EF3F6A352125CCA200498C00 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStringConvertable.swift; sourceTree = "<group>"; };
 		EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
 		EFA900D620E3AFF30033B63B /* PhotoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +132,7 @@
 				EF24FEF7211C3B160069F83A /* CameraController.swift */,
 				EF24FEF6211C3B160069F83A /* PhotoWallController.swift */,
 				EF0E5255212467C800B5BEB0 /* LoadingController.swift */,
+				EF3F6A322125C16D00498C00 /* LibraryController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -157,6 +162,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EF3F6A342125CC8E00498C00 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF3F6A352125CCA200498C00 /* AssetCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EF8AF5C1211E661C00430D8F /* Extensions */ = {
@@ -192,6 +205,7 @@
 		EFA900D820E3AFF30033B63B /* PhotoWall */ = {
 			isa = PBXGroup;
 			children = (
+				EF3F6A342125CC8E00498C00 /* Views */,
 				EF8AF5C1211E661C00430D8F /* Extensions */,
 				EF24FEFE211C43B40069F83A /* Services */,
 				EF24FEE8211BC10C0069F83A /* Models */,
@@ -492,11 +506,13 @@
 			files = (
 				EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
+				EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */,
 				EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */,
 				EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */,
 				EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */,
 				EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */,
 				EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */,
+				EF3F6A332125C16D00498C00 /* LibraryController.swift in Sources */,
 				EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */,
 				EF3F6A312125BFF400498C00 /* AppConfig.swift in Sources */,
 				EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */,

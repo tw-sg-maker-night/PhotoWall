@@ -22,9 +22,17 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
         performSegue(withIdentifier: "ShowCamera", sender: self)
     }
     
+    @IBAction func libraryClicked() {
+        sceneView.session.pause()
+        performSegue(withIdentifier: "ShowLibrary", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cameraController = segue.destination as? CameraController {
             cameraController.assetIdentifier = "asset1"
+        }
+        if let _ = segue.destination as? LibraryController {
+            // ...
         }
     }
     
