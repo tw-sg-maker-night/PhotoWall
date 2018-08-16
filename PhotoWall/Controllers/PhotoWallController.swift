@@ -22,6 +22,12 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
         performSegue(withIdentifier: "ShowCamera", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let cameraController = segue.destination as? CameraController {
+            cameraController.assetIdentifier = "asset1"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +35,7 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     }
     
     func loadWallAssets() {
-//        self.wallAssets = WallAssetStore().loadAssets()
-        self.wallAssets = []
+        self.wallAssets = WallAssetStore().loadAssets()
         for wallAsset in wallAssets {
             print("WallAsset: \(wallAsset)")
         }

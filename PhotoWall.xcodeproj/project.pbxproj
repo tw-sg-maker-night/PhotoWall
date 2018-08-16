@@ -10,13 +10,10 @@
 		005F9D222C3B318E0B5B34EB /* Pods_PhotoWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */; };
 		07D1610E3D980B29E83413BF /* Pods_PhotoWallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174A236BC3F7A05A32242F68 /* Pods_PhotoWallUITests.framework */; };
 		B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */; };
+		EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E5255212467C800B5BEB0 /* LoadingController.swift */; };
 		EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEE9211BC1D10069F83A /* WallAsset.swift */; };
-		EF24FEF2211BCB4E0069F83A /* Cory.png in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEEE211BCB4C0069F83A /* Cory.png */; };
-		EF24FEF4211BCB4E0069F83A /* Angie.png in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEF0211BCB4D0069F83A /* Angie.png */; };
 		EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF6211C3B160069F83A /* PhotoWallController.swift */; };
 		EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF7211C3B160069F83A /* CameraController.swift */; };
-		EF24FEFC211C41350069F83A /* Cory.m4v in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEFA211C41340069F83A /* Cory.m4v */; };
-		EF24FEFD211C41350069F83A /* Angie.m4v in Resources */ = {isa = PBXBuildFile; fileRef = EF24FEFB211C41340069F83A /* Angie.m4v */; };
 		EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */; };
 		EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FF01211D67160069F83A /* WallAssetManifest.swift */; };
 		EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */; };
@@ -55,13 +52,10 @@
 		C4A7193B75A71DD1854CCD22 /* Pods-PhotoWallUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE3804261C981A2DB03B8DB8 /* Pods-PhotoWallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EF0E5255212467C800B5BEB0 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
 		EF24FEE9211BC1D10069F83A /* WallAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAsset.swift; sourceTree = "<group>"; };
-		EF24FEEE211BCB4C0069F83A /* Cory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cory.png; sourceTree = "<group>"; };
-		EF24FEF0211BCB4D0069F83A /* Angie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Angie.png; sourceTree = "<group>"; };
 		EF24FEF6211C3B160069F83A /* PhotoWallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoWallController.swift; path = PhotoWall/Controllers/PhotoWallController.swift; sourceTree = SOURCE_ROOT; };
 		EF24FEF7211C3B160069F83A /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = PhotoWall/Controllers/CameraController.swift; sourceTree = SOURCE_ROOT; };
-		EF24FEFA211C41340069F83A /* Cory.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cory.m4v; sourceTree = "<group>"; };
-		EF24FEFB211C41340069F83A /* Angie.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Angie.m4v; sourceTree = "<group>"; };
 		EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetStore.swift; sourceTree = "<group>"; };
 		EF24FF01211D67160069F83A /* WallAssetManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetManifest.swift; sourceTree = "<group>"; };
 		EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStringConvertable.swift; sourceTree = "<group>"; };
@@ -127,6 +121,7 @@
 			children = (
 				EF24FEF7211C3B160069F83A /* CameraController.swift */,
 				EF24FEF6211C3B160069F83A /* PhotoWallController.swift */,
+				EF0E5255212467C800B5BEB0 /* LoadingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -138,15 +133,6 @@
 				EF24FF01211D67160069F83A /* WallAssetManifest.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EF24FEED211BCAF80069F83A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EF24FF05211D68400069F83A /* Angie */,
-				EF24FF04211D683A0069F83A /* Cory */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		EF24FEFE211C43B40069F83A /* Services */ = {
@@ -163,24 +149,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EF24FF04211D683A0069F83A /* Cory */ = {
-			isa = PBXGroup;
-			children = (
-				EF24FEFA211C41340069F83A /* Cory.m4v */,
-				EF24FEEE211BCB4C0069F83A /* Cory.png */,
-			);
-			path = Cory;
-			sourceTree = "<group>";
-		};
-		EF24FF05211D68400069F83A /* Angie */ = {
-			isa = PBXGroup;
-			children = (
-				EF24FEFB211C41340069F83A /* Angie.m4v */,
-				EF24FEF0211BCB4D0069F83A /* Angie.png */,
-			);
-			path = Angie;
 			sourceTree = "<group>";
 		};
 		EF8AF5C1211E661C00430D8F /* Extensions */ = {
@@ -218,7 +186,6 @@
 			children = (
 				EF8AF5C1211E661C00430D8F /* Extensions */,
 				EF24FEFE211C43B40069F83A /* Services */,
-				EF24FEED211BCAF80069F83A /* Resources */,
 				EF24FEE8211BC10C0069F83A /* Models */,
 				EF0CBBD92111D6730067E9AB /* Controllers */,
 				EFA900D920E3AFF30033B63B /* AppDelegate.swift */,
@@ -369,11 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF24FEF4211BCB4E0069F83A /* Angie.png in Resources */,
-				EF24FEFD211C41350069F83A /* Angie.m4v in Resources */,
 				EFA900E620E3AFF90033B63B /* LaunchScreen.storyboard in Resources */,
-				EF24FEFC211C41350069F83A /* Cory.m4v in Resources */,
-				EF24FEF2211BCB4E0069F83A /* Cory.png in Resources */,
 				EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */,
 				EFA900E120E3AFF30033B63B /* Main.storyboard in Resources */,
 			);
@@ -520,6 +483,7 @@
 				EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
 				EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */,
+				EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */,
 				EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */,
 				EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */,
 				EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */,

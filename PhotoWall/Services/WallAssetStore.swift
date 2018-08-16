@@ -19,19 +19,6 @@ class WallAssetStore {
         self.baseUrl = documentsUrl.appendingPathComponent(groupId)
     }
     
-    func setupInitial() {
-        guard let existing = try? fileManager.contentsOfDirectory(atPath: baseUrl.path), existing.count == 0 else {
-            return
-        }
-        
-        do {
-            try copyFilesFor(name: "Cory")
-            try copyFilesFor(name: "Angie")
-        } catch {
-            print("Failed to initialize the AR content. \(error.localizedDescription)")
-        }
-    }
-    
     func loadAssets() -> [WallAsset] {
         print("loadAssets")
         let folders = try! fileManager.contentsOfDirectory(atPath: baseUrl.path)
@@ -93,7 +80,7 @@ class WallAssetStore {
         )
     }
     
-    private func loadManifest(for name: String) -> WallAssetManifest? {
+    func loadManifest(for name: String) -> WallAssetManifest? {
         let manifestUrl = baseUrl.appendingPathComponent("\(name)/manifest.json")
         return loadManifest(from: manifestUrl)
     }
@@ -110,5 +97,9 @@ class WallAssetStore {
     
     func manifestUrl(for name: String) -> URL {
         return baseUrl.appendingPathComponent("\(name)/manifest.json")
+    }
+    
+    func fileUrl(fileName: String, for name: String) -> URL {
+        return baseUrl.appendingPathComponent("\(name)/\(fileName)")
     }
 }

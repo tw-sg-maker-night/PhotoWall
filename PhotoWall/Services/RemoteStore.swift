@@ -16,7 +16,7 @@ class RemoteStore {
     let assetStore: WallAssetStore
     let groupId: String
     
-    init(groupId: String = "Singapore", assetStore: WallAssetStore) {
+    init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore()) {
         let credentials = AWSStaticCredentialsProvider(accessKey: "***REMOVED***", secretKey: "***REMOVED***")
         let serviceConfiguration = AWSServiceConfiguration(region: .APSoutheast1, credentialsProvider: credentials)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
@@ -26,36 +26,52 @@ class RemoteStore {
         self.groupId = groupId
     }
 
-    func downloadManifests() {
-        getAssetNames { assetNames in
-            let _: [AWSTask<AnyObject>] = assetNames.map { assetName in
-                self.assetStore.createAssetDir(name: assetName)
-                return self.downloadManifest(for: assetName)
+    func downloadAssets() -> AWSTask<AnyObject>? {
+        return getAssetNames()!.continueOnSuccessWith { task in
+            guard let assetNames = task.result as? [String] else {
+                print("Unknown response type")
+                return nil
             }
-            // TODO: monitor downloads, then parse manifest file(s) and download resources specified in manifest.
+            
+            let tasks: [AWSTask<AnyObject>] = assetNames.map { assetName in
+                self.assetStore.createAssetDir(name: assetName)
+                return self.downloadManifest(for: assetName).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
+                    print("Downloaded manifest file")
+                    if let assetManifest = self.assetStore.loadManifest(for: assetName) {
+                        let imageTask = self.downloadAsset(fileName: assetManifest.imageFileName, for: assetName)
+                        let videoTask = self.downloadAsset(fileName: assetManifest.videoFileName, for: assetName)
+                        return AWSTask(forCompletionOfAllTasks: [imageTask, videoTask])
+                    }
+                    return nil
+                }
+            }
+            return AWSTask(forCompletionOfAllTasks: tasks).continueOnSuccessWith { (task: AWSTask<AnyObject>) -> AWSTask<AnyObject>? in
+                print("All done!")
+                return nil
+            }
         }
     }
     
-    func getAssetNames(block: @escaping ([String]) -> Void) {
+    func getAssetNames() -> AWSTask<AnyObject>? {
         if let request = AWSS3ListObjectsV2Request() {
             request.bucket = "photo-wall-assets"
             request.prefix = "\(groupId)/"
             request.delimiter = "/"
-            s3.listObjectsV2(request) { output, error in
-                guard let output = output, error == nil else {
-                    print("Error: \(error!.localizedDescription)")
-                    block([])
-                    return
+            return s3.listObjectsV2(request).continueWith { task in
+                guard let result = task.result, task.error == nil else {
+                    print("Error: \(task.error!.localizedDescription)")
+                    return nil
                 }
-                let prefixes: [String] = output.commonPrefixes!.map { object in
+                let prefixes: [String] = result.commonPrefixes!.map { object in
                     if let prefix = object.prefix {
                         return prefix.replacingOccurrences(of: "\(self.groupId)/", with: "").replacingOccurrences(of: "/", with: "")
                     }
                     return nil
                 }.compactMap { $0 }
-                block(prefixes)
+                return AWSTask(result: NSArray(array: prefixes))
             }
         }
+        return nil
     }
     
     func downloadManifest(for name: String) -> AWSTask<AnyObject> {
@@ -63,11 +79,14 @@ class RemoteStore {
         request.bucket = "photo-wall-assets"
         request.key = "\(groupId)/\(name)/manifest.json"
         request.downloadingFileURL = assetStore.manifestUrl(for: name)
-        let task = self.transferManager.download(request)
-        task.continueWith(executor: AWSExecutor.mainThread()) { response in
-            print("finished download")
-            return nil
-        }
-        return task
+        return self.transferManager.download(request)
+    }
+    
+    func downloadAsset(fileName: String, for name: String) -> AWSTask<AnyObject> {
+        let request = AWSS3TransferManagerDownloadRequest()!
+        request.bucket = "photo-wall-assets"
+        request.key = "\(groupId)/\(name)/\(fileName)"
+        request.downloadingFileURL = assetStore.fileUrl(fileName: fileName, for: name)
+        return self.transferManager.download(request)
     }
 }

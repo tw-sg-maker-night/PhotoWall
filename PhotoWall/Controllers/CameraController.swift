@@ -17,6 +17,7 @@ class CameraController: UIViewController {
     var session: AVCaptureSession!
     var videoOutput: AVCaptureMovieFileOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    var assetIdentifier: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +101,7 @@ extension CameraController: AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo fileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if error == nil {
-            WallAssetStore().storeVideo(fileURL, for: "Cory")
+            WallAssetStore().storeVideo(fileURL, for: assetIdentifier)
             backClicked()
         } else {
             print("fileOutput - error: \(error!.localizedDescription)")
