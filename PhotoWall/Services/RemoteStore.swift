@@ -16,8 +16,8 @@ class RemoteStore {
     let assetStore: WallAssetStore
     let groupId: String
 
-    init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore()) {
-        let credentials = AWSStaticCredentialsProvider(accessKey: "***REMOVED***", secretKey: "***REMOVED***")
+    init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore(), appConfig: AppConfig = AppConfigLoader().load()) {
+        let credentials = AWSStaticCredentialsProvider(accessKey: appConfig.awsAccessKey, secretKey: appConfig.awsSecretKey)
         let serviceConfiguration = AWSServiceConfiguration(region: .APSoutheast1, credentialsProvider: credentials)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         self.s3 = AWSS3.default()
