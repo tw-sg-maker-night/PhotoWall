@@ -10,12 +10,12 @@ import Foundation
 import AWSS3
 
 class RemoteStore {
-    
+
     let transferManager: AWSS3TransferManager
     let s3: AWSS3
     let assetStore: WallAssetStore
     let groupId: String
-    
+
     init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore()) {
         let credentials = AWSStaticCredentialsProvider(accessKey: "***REMOVED***", secretKey: "***REMOVED***")
         let serviceConfiguration = AWSServiceConfiguration(region: .APSoutheast1, credentialsProvider: credentials)
@@ -32,7 +32,7 @@ class RemoteStore {
                 print("Unknown response type")
                 return nil
             }
-            
+
             let tasks: [AWSTask<AnyObject>] = assetNames.map { assetName in
                 self.assetStore.createAssetDir(name: assetName)
                 return self.downloadManifest(for: assetName).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
@@ -51,7 +51,7 @@ class RemoteStore {
             }
         }
     }
-    
+
     func getAssetNames() -> AWSTask<AnyObject>? {
         if let request = AWSS3ListObjectsV2Request() {
             request.bucket = "photo-wall-assets"
@@ -73,7 +73,7 @@ class RemoteStore {
         }
         return nil
     }
-    
+
     func downloadManifest(for name: String) -> AWSTask<AnyObject> {
         let request = AWSS3TransferManagerDownloadRequest()!
         request.bucket = "photo-wall-assets"
@@ -81,7 +81,7 @@ class RemoteStore {
         request.downloadingFileURL = assetStore.manifestUrl(for: name)
         return self.transferManager.download(request)
     }
-    
+
     func downloadAsset(fileName: String, for name: String) -> AWSTask<AnyObject> {
         let request = AWSS3TransferManagerDownloadRequest()!
         request.bucket = "photo-wall-assets"
