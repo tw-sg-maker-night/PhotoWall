@@ -13,6 +13,12 @@ struct WallAssetManifest: Codable, CustomStringConvertible {
     var videoFileName: String
     var imageWidth: Float
     
+    init() {
+        self.imageFileName = ""
+        self.videoFileName = ""
+        self.imageWidth = 0.17
+    }
+    
     init(imageFileName: String, videoFileName: String, imageWidth: Float) {
         self.imageFileName = imageFileName
         self.videoFileName = videoFileName

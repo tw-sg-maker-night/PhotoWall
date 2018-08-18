@@ -101,11 +101,21 @@ extension CameraController: AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo fileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if error == nil {
-            WallAssetStore().storeVideo(fileURL, for: assetIdentifier)
+            let assetStore = WallAssetStore()
+            assetStore.createAssetDir(name: assetIdentifier)
+            let image = imageFromVideo(url: fileURL)
+            assetStore.storeImage(image, for: assetIdentifier)
+            assetStore.storeVideo(fileURL, for: assetIdentifier)
             backClicked()
         } else {
             print("fileOutput - error: \(error!.localizedDescription)")
         }
     }
     
+    func imageFromVideo(url: URL) -> UIImage {
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        let cgImage = try! imageGenerator.copyCGImage(at: CMTime(seconds: 0.0, preferredTimescale: 1), actualTime: nil)
+        return UIImage(cgImage: cgImage)
+    }
 }

@@ -29,7 +29,7 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cameraController = segue.destination as? CameraController {
-            cameraController.assetIdentifier = "asset1"
+            cameraController.assetIdentifier = UUID().uuidString
         }
         if let _ = segue.destination as? LibraryController {
             // ...

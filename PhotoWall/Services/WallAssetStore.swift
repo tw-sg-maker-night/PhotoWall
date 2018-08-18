@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class WallAssetStore {
     
@@ -33,13 +34,19 @@ class WallAssetStore {
         try? fileManager.createDirectory(at: assetDir, withIntermediateDirectories: true, attributes: nil)
     }
     
+    func storeImage(_ image: UIImage, for name: String) {
+        let newImageUrl = fileUrl(fileName: "\(UUID().uuidString).png", for: name)
+        try? image.pngData()?.write(to: newImageUrl)
+        if var manifest = loadOrCreateManifest(for: name) {
+            manifest.setImageFileName(fileName: newImageUrl.lastPathComponent)
+            saveManifest(manifest, for: name)
+        }
+    }
+    
     func storeVideo(_ url: URL, for name: String) {
-        let uuid = UUID().uuidString
-        let assetDir = baseUrl.appendingPathComponent(name)
-        let newVideoUrl = assetDir.appendingPathComponent("\(uuid).\(url.pathExtension)")
-        print("storeVideo - to: \(newVideoUrl.absoluteString)")
+        let newVideoUrl = fileUrl(fileName: "\(UUID().uuidString).\(url.pathExtension)", for: name)
         try! fileManager.copyItem(at: url, to: newVideoUrl)
-        if var manifest = loadManifest(for: name) {
+        if var manifest = loadOrCreateManifest(for: name) {
             manifest.setVideoFileName(fileName: newVideoUrl.lastPathComponent)
             saveManifest(manifest, for: name)
         }
@@ -78,6 +85,15 @@ class WallAssetStore {
             videoUrl: url.appendingPathComponent(manifest.videoFileName),
             width: manifest.imageWidth
         )
+    }
+    
+    func loadOrCreateManifest(for name: String) -> WallAssetManifest? {
+        var manifest = loadManifest(for: name)
+        if manifest == nil {
+            manifest = WallAssetManifest()
+            saveManifest(WallAssetManifest(), for: name)
+        }
+        return manifest
     }
     
     func loadManifest(for name: String) -> WallAssetManifest? {
