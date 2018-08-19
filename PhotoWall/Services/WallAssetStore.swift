@@ -52,22 +52,11 @@ class WallAssetStore {
         }
     }
     
-    private func copyFilesFor(name: String) throws {
-        let assetDir = baseUrl.appendingPathComponent(name)
-        createAssetDir(name: name)
-        
-        let imageUrl = Bundle.main.url(forResource: name, withExtension: "png")!
-        let newImageUrl = assetDir.appendingPathComponent("\(name).png")
-        try fileManager.copyItem(at: imageUrl, to: newImageUrl)
-        
-        let videoUrl = Bundle.main.url(forResource: name, withExtension: "m4v")!
-        let newVideoUrl = assetDir.appendingPathComponent("\(name).m4v")
-        try fileManager.copyItem(at: videoUrl, to: newVideoUrl)
-        
-        let manifest = WallAssetManifest(imageFileName: imageUrl.lastPathComponent, videoFileName: videoUrl.lastPathComponent, imageWidth: 0.17)
-        let manifestData = try? JSONEncoder().encode(manifest)
-        let newManifestUrl = assetDir.appendingPathComponent("manifest.json")
-        try manifestData?.write(to: newManifestUrl)
+    func delete(asset: WallAsset) {
+        try? fileManager.removeItem(at: asset.imageUrl)
+        try? fileManager.removeItem(at: asset.videoUrl)
+        try? fileManager.removeItem(at: self.manifestUrl(for: asset.identifier))
+        try? fileManager.removeItem(at: self.assetFolder(for: asset.identifier))
     }
     
     private func loadWallAsset(from url: URL) -> WallAsset? {
@@ -117,5 +106,9 @@ class WallAssetStore {
     
     func fileUrl(fileName: String, for name: String) -> URL {
         return baseUrl.appendingPathComponent("\(name)/\(fileName)")
+    }
+    
+    func assetFolder(for name: String) -> URL {
+        return baseUrl.appendingPathComponent(name)
     }
 }

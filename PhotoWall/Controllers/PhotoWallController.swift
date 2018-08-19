@@ -22,12 +22,8 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
         performSegue(withIdentifier: "ShowCamera", sender: self)
     }
     
-    @IBAction func libraryClicked() {
-        sceneView.session.pause()
-        performSegue(withIdentifier: "ShowLibrary", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        sceneView.session.pause()
         if let cameraController = segue.destination as? CameraController {
             cameraController.assetIdentifier = UUID().uuidString
         }
@@ -55,9 +51,9 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         loadWallAssets()
-        
         for asset in wallAssets {
             self.players[asset.identifier] = loadPlayer(for: asset)
         }

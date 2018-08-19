@@ -16,13 +16,13 @@ struct WallAssetManifest: Codable, CustomStringConvertible {
     init() {
         self.imageFileName = ""
         self.videoFileName = ""
-        self.imageWidth = 0.17
+        self.imageWidth = 0.15
     }
     
     init(imageFileName: String, videoFileName: String, imageWidth: Float) {
         self.imageFileName = imageFileName
         self.videoFileName = videoFileName
-        self.imageWidth = imageWidth
+        self.imageWidth = 0.15
     }
     
     mutating func setImageFileName(fileName: String) {

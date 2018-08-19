@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ARKit
 
-struct WallAsset: CustomStringConvertible {
+struct WallAsset: CustomStringConvertible, Equatable {
     var identifier: String
     var imageUrl: URL
     var videoUrl: URL
@@ -28,5 +28,9 @@ struct WallAsset: CustomStringConvertible {
         let referenceImage = ARReferenceImage(image.cgImage!, orientation: CGImagePropertyOrientation.up, physicalWidth: CGFloat(self.width))
         referenceImage.name = self.identifier
         return referenceImage
+    }
+    
+    static func == (lhs: WallAsset, rhs: WallAsset) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }

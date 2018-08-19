@@ -91,6 +91,7 @@ class CameraController: UIViewController {
     @IBAction func takePhoto() {
         print("takePhoto")
     }
+    
 }
 
 extension CameraController: AVCaptureFileOutputRecordingDelegate {
@@ -116,6 +117,21 @@ extension CameraController: AVCaptureFileOutputRecordingDelegate {
         let asset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         let cgImage = try! imageGenerator.copyCGImage(at: CMTime(seconds: 0.0, preferredTimescale: 1), actualTime: nil)
-        return UIImage(cgImage: cgImage)
+        var image = UIImage(cgImage: cgImage)
+        let imageView = UIImageView(image: image)
+        imageView.frame.size.width = 1500
+        imageView.frame.size.height = 1000
+        imageView.contentMode = .scaleAspectFill
+        imageView.contentScaleFactor = 1.5
+        imageView.clipsToBounds = true
+        
+        UIGraphicsBeginImageContext(imageView.frame.size)
+        imageView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        return image
     }
 }

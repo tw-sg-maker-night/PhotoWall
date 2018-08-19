@@ -36,12 +36,12 @@
                         <viewLayoutGuide key="safeArea" id="ZNI-8I-K9x"/>
                     </view>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="ShowAR" id="hwJ-Ij-UPq"/>
+                        <segue destination="H1p-ld-zUH" kind="show" identifier="ShowAR" id="TPC-lc-86r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ujj-NP-zWa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-660" y="15"/>
+            <point key="canvasLocation" x="-841" y="1057"/>
         </scene>
         <!--Photo Wall Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -73,7 +73,7 @@
                                 </constraints>
                                 <state key="normal" title="Library"/>
                                 <connections>
-                                    <action selector="libraryClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="KiX-Ee-8c9"/>
+                                    <segue destination="6qp-GD-7o5" kind="show" identifier="ShowLibrary" id="nmW-eX-iYk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -90,15 +90,31 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nlO-vA-POa"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QO9-cb-kiV"/>
                     <connections>
                         <outlet property="sceneView" destination="38w-K7-923" id="ofv-Fd-Zc9"/>
                         <segue destination="xfE-Fg-jhL" kind="presentation" identifier="ShowCamera" id="wgU-Wv-iK6"/>
-                        <segue destination="6qp-GD-7o5" kind="show" identifier="ShowLibrary" id="GHs-XI-cRM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.833583208395808" y="16.800000000000001"/>
+            <point key="canvasLocation" x="33" y="1991"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vpj-1Y-WYR">
+            <objects>
+                <navigationController id="H1p-ld-zUH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y0q-Ev-RRx">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="GdF-Ly-8Dx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DiG-1B-AVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33" y="1057"/>
         </scene>
         <!--Camera Controller-->
         <scene sceneID="fVh-do-wox">
@@ -156,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFk-47-QKF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888.30584707646187" y="21.600000000000001"/>
+            <point key="canvasLocation" x="842" y="1990"/>
         </scene>
         <!--Library Controller-->
         <scene sceneID="RKG-RQ-uSi">
@@ -180,8 +196,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cOu-Ys-wzx">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cOu-Ys-wzx">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="429-checkmark2" translatesAutoresizingMaskIntoConstraints="NO" id="vDQ-mw-heY">
+                                            <rect key="frame" x="8" y="8" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="1Lk-m3-Lsc"/>
+                                                <constraint firstAttribute="height" constant="32" id="GNd-qr-kxY"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -189,18 +212,25 @@
                                     <constraint firstItem="cOu-Ys-wzx" firstAttribute="top" secondItem="apz-gI-1oM" secondAttribute="top" id="OyM-nD-eT0"/>
                                     <constraint firstAttribute="trailing" secondItem="cOu-Ys-wzx" secondAttribute="trailing" id="aHh-ws-mla"/>
                                     <constraint firstItem="cOu-Ys-wzx" firstAttribute="leading" secondItem="apz-gI-1oM" secondAttribute="leading" id="iNX-Kk-Rsy"/>
+                                    <constraint firstItem="vDQ-mw-heY" firstAttribute="top" secondItem="apz-gI-1oM" secondAttribute="top" constant="8" id="lPC-mM-ipG"/>
+                                    <constraint firstItem="vDQ-mw-heY" firstAttribute="leading" secondItem="apz-gI-1oM" secondAttribute="leading" constant="8" id="nif-t2-fmr"/>
                                     <constraint firstAttribute="bottom" secondItem="cOu-Ys-wzx" secondAttribute="bottom" id="uc8-th-2Rp"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="checkedView" destination="vDQ-mw-heY" id="Rc2-pD-SEW"/>
                                     <outlet property="imageView" destination="cOu-Ys-wzx" id="CIE-2Q-ZyC"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="qs2-lN-KZ6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgV-RO-lkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.833583208395808" y="960.79999999999995"/>
+            <point key="canvasLocation" x="33" y="2969"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="429-checkmark2" width="28" height="28"/>
+    </resources>
 </document>

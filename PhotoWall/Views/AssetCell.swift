@@ -12,5 +12,6 @@ import UIKit
 class AssetCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
-    
+    @IBOutlet var checkedView: UIImageView!
+        
 }
