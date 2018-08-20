@@ -83,6 +83,9 @@ class RemoteStore {
     }
 
     func downloadAsset(fileName: String, for name: String) -> AWSTask<AnyObject> {
+        guard !assetStore.fileExists(fileName, for: name) else {
+            return AWSTask(result: nil)
+        }
         let request = AWSS3TransferManagerDownloadRequest()!
         request.bucket = "photo-wall-assets"
         request.key = "\(groupId)/\(name)/\(fileName)"

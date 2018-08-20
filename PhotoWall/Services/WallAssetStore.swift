@@ -111,4 +111,9 @@ class WallAssetStore {
     func assetFolder(for name: String) -> URL {
         return baseUrl.appendingPathComponent(name)
     }
+    
+    func fileExists(_ fileName: String, for name: String) -> Bool {
+        let url = fileUrl(fileName: fileName, for: name)
+        return fileManager.fileExists(atPath: url.path)
+    }
 }
