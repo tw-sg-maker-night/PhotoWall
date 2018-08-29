@@ -22,13 +22,14 @@ class LibraryController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Library"
+        navigationItem.title = "Library"
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashClicked))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(uploadClicked))
         
-        self.collectionView?.allowsMultipleSelection = true
-        self.collectionView?.allowsSelection = true
-    }
+        collectionView?.allowsMultipleSelection = true
+        collectionView?.allowsSelection = true
+        collectionView?.contentInsetAdjustmentBehavior = .always
+    }    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
