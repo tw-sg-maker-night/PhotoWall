@@ -2,7 +2,7 @@ platform :ios, '12.0'
 
 def testing_pods
   pod 'Quick'
-  pod 'Nimble', '~> 7.1.2'
+  pod 'Nimble', '~> 7.1.3'
 end
 
 target 'PhotoWall' do
@@ -14,12 +14,6 @@ target 'PhotoWall' do
   pod 'AWSS3', '~> 2.6.26'
 
   target 'PhotoWallTests' do
-    inherit! :search_paths
-    # Pods for testing
-    testing_pods
-  end
-
-  target 'PhotoWallUITests' do
     inherit! :search_paths
     # Pods for testing
     testing_pods

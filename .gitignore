@@ -1,3 +1,7 @@
 PhotoWall.xcodeproj/project.xcworkspace/xcuserdata
 Pods
 Secrets.plist
+report.xml
+fastlane/test_output
+PhotoWall.xcodeproj/xcuserdata
+PhotoWall.xcworkspace/xcuserdata

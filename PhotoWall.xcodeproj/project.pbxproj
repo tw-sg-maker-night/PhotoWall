@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		005F9D222C3B318E0B5B34EB /* Pods_PhotoWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */; };
-		07D1610E3D980B29E83413BF /* Pods_PhotoWallUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174A236BC3F7A05A32242F68 /* Pods_PhotoWallUITests.framework */; };
 		B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */; };
 		EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E5255212467C800B5BEB0 /* LoadingController.swift */; };
 		EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEE9211BC1D10069F83A /* WallAsset.swift */; };
@@ -28,18 +27,10 @@
 		EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E220E3AFF90033B63B /* Assets.xcassets */; };
 		EFA900E620E3AFF90033B63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E420E3AFF90033B63B /* LaunchScreen.storyboard */; };
 		EFA900F120E3AFFA0033B63B /* PhotoWallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */; };
-		EFA900FC20E3AFFA0033B63B /* PhotoWallUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900FB20E3AFFA0033B63B /* PhotoWallUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		EFA900ED20E3AFF90033B63B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EFA900CE20E3AFF20033B63B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EFA900D520E3AFF30033B63B;
-			remoteInfo = PhotoWall;
-		};
-		EFA900F820E3AFFA0033B63B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFA900CE20E3AFF20033B63B /* Project object */;
 			proxyType = 1;
@@ -79,9 +70,6 @@
 		EFA900EC20E3AFF90033B63B /* PhotoWallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallTests.swift; sourceTree = "<group>"; };
 		EFA900F220E3AFFA0033B63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFA900F720E3AFFA0033B63B /* PhotoWallUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWallUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFA900FB20E3AFFA0033B63B /* PhotoWallUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallUITests.swift; sourceTree = "<group>"; };
-		EFA900FD20E3AFFA0033B63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,14 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFA900F420E3AFFA0033B63B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07D1610E3D980B29E83413BF /* Pods_PhotoWallUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,13 +137,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		EF24FF03211D68000069F83A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		EF3F6A342125CC8E00498C00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +158,6 @@
 			children = (
 				EFA900D820E3AFF30033B63B /* PhotoWall */,
 				EFA900EF20E3AFF90033B63B /* PhotoWallTests */,
-				EFA900FA20E3AFFA0033B63B /* PhotoWallUITests */,
 				EFA900D720E3AFF30033B63B /* Products */,
 				C6BD483AE6D07D547211A2D8 /* Pods */,
 				F59B4A6DE0B63CC295F994DC /* Frameworks */,
@@ -197,7 +169,6 @@
 			children = (
 				EFA900D620E3AFF30033B63B /* PhotoWall.app */,
 				EFA900EC20E3AFF90033B63B /* PhotoWallTests.xctest */,
-				EFA900F720E3AFFA0033B63B /* PhotoWallUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,20 +194,10 @@
 		EFA900EF20E3AFF90033B63B /* PhotoWallTests */ = {
 			isa = PBXGroup;
 			children = (
-				EF24FF03211D68000069F83A /* Models */,
 				EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */,
 				EFA900F220E3AFFA0033B63B /* Info.plist */,
 			);
 			path = PhotoWallTests;
-			sourceTree = "<group>";
-		};
-		EFA900FA20E3AFFA0033B63B /* PhotoWallUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EFA900FB20E3AFFA0033B63B /* PhotoWallUITests.swift */,
-				EFA900FD20E3AFFA0033B63B /* Info.plist */,
-			);
-			path = PhotoWallUITests;
 			sourceTree = "<group>";
 		};
 		F59B4A6DE0B63CC295F994DC /* Frameworks */ = {
@@ -291,26 +252,6 @@
 			productReference = EFA900EC20E3AFF90033B63B /* PhotoWallTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EFA900F620E3AFFA0033B63B /* PhotoWallUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EFA9010620E3AFFA0033B63B /* Build configuration list for PBXNativeTarget "PhotoWallUITests" */;
-			buildPhases = (
-				37057D64F7E9BD748802555F /* [CP] Check Pods Manifest.lock */,
-				EFA900F320E3AFFA0033B63B /* Sources */,
-				EFA900F420E3AFFA0033B63B /* Frameworks */,
-				EFA900F520E3AFFA0033B63B /* Resources */,
-				D4673C839CED2BC005BDE47E /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EFA900F920E3AFFA0033B63B /* PBXTargetDependency */,
-			);
-			name = PhotoWallUITests;
-			productName = PhotoWallUITests;
-			productReference = EFA900F720E3AFFA0033B63B /* PhotoWallUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -325,10 +266,6 @@
 						CreatedOnToolsVersion = 10.0;
 					};
 					EFA900EB20E3AFF90033B63B = {
-						CreatedOnToolsVersion = 10.0;
-						TestTargetID = EFA900D520E3AFF30033B63B;
-					};
-					EFA900F620E3AFFA0033B63B = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = EFA900D520E3AFF30033B63B;
 					};
@@ -349,7 +286,6 @@
 			targets = (
 				EFA900D520E3AFF30033B63B /* PhotoWall */,
 				EFA900EB20E3AFF90033B63B /* PhotoWallTests */,
-				EFA900F620E3AFFA0033B63B /* PhotoWallUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -367,13 +303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		EFA900EA20E3AFF90033B63B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFA900F520E3AFFA0033B63B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -423,24 +352,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37057D64F7E9BD748802555F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PhotoWallUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6BF1C0A38600AFA721402501 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,26 +388,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D4673C839CED2BC005BDE47E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -528,14 +419,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EFA900F320E3AFFA0033B63B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EFA900FC20E3AFFA0033B63B /* PhotoWallUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -543,11 +426,6 @@
 			isa = PBXTargetDependency;
 			target = EFA900D520E3AFF30033B63B /* PhotoWall */;
 			targetProxy = EFA900ED20E3AFF90033B63B /* PBXContainerItemProxy */;
-		};
-		EFA900F920E3AFFA0033B63B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EFA900D520E3AFF30033B63B /* PhotoWall */;
-			targetProxy = EFA900F820E3AFFA0033B63B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -765,46 +643,6 @@
 			};
 			name = Release;
 		};
-		EFA9010720E3AFFA0033B63B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4A7193B75A71DD1854CCD22 /* Pods-PhotoWallUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PhotoWallUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.PhotoWallUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PhotoWall;
-			};
-			name = Debug;
-		};
-		EFA9010820E3AFFA0033B63B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = PhotoWallUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.PhotoWallUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PhotoWall;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -831,15 +669,6 @@
 			buildConfigurations = (
 				EFA9010420E3AFFA0033B63B /* Debug */,
 				EFA9010520E3AFFA0033B63B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EFA9010620E3AFFA0033B63B /* Build configuration list for PBXNativeTarget "PhotoWallUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EFA9010720E3AFFA0033B63B /* Debug */,
-				EFA9010820E3AFFA0033B63B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
