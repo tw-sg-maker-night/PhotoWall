@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AVKit
 import AVFoundation
+import AWSCore
 
 class LibraryController: UICollectionViewController {
     
@@ -22,7 +23,8 @@ class LibraryController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Library"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashClicked))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(uploadClicked))
         
         self.collectionView?.allowsMultipleSelection = true
         self.collectionView?.allowsSelection = true
@@ -45,6 +47,21 @@ class LibraryController: UICollectionViewController {
         for asset in selectedAssets {
             WallAssetStore().delete(asset: asset)
             assets.removeAll(where: { $0 == asset })
+        }
+        collectionView.reloadData()
+    }
+    
+    @objc
+    func uploadClicked() {
+        for asset in selectedAssets {
+            RemoteStore().uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
+                if let error = task.error {
+                    print("Upload Failed! - \(error.localizedDescription)")
+                } else {
+                    print("Upload Result = \(task.result!)")
+                }
+                return nil
+            }
         }
         collectionView.reloadData()
     }

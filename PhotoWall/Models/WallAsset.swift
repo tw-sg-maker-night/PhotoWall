@@ -16,6 +16,14 @@ struct WallAsset: CustomStringConvertible, Equatable {
     var videoUrl: URL
     var width: Float
 
+    var imageFileName: String {
+        return imageUrl.lastPathComponent
+    }
+    
+    var videoFileName: String {
+        return videoUrl.lastPathComponent
+    }
+    
     func image() -> UIImage? {
         return UIImage(contentsOfFile: self.imageUrl.path)
     }
