@@ -10,6 +10,7 @@
 		005F9D222C3B318E0B5B34EB /* Pods_PhotoWall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */; };
 		B7A08F734450CD7462A38BF2 /* Pods_PhotoWallTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D8DC9AD0B5BE5659A24A9EB /* Pods_PhotoWallTests.framework */; };
 		EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E5255212467C800B5BEB0 /* LoadingController.swift */; };
+		EF12C5462136E98E0056406F /* ARButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF12C5452136E98E0056406F /* ARButton.swift */; };
 		EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEE9211BC1D10069F83A /* WallAsset.swift */; };
 		EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF6211C3B160069F83A /* PhotoWallController.swift */; };
 		EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF7211C3B160069F83A /* CameraController.swift */; };
@@ -49,6 +50,7 @@
 		EA691CD4572AA350C15F6EBD /* Pods-PhotoWallUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallUITests/Pods-PhotoWallUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE3804261C981A2DB03B8DB8 /* Pods-PhotoWallTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWallTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWallTests/Pods-PhotoWallTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0E5255212467C800B5BEB0 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
+		EF12C5452136E98E0056406F /* ARButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButton.swift; sourceTree = "<group>"; };
 		EF24FEE9211BC1D10069F83A /* WallAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAsset.swift; sourceTree = "<group>"; };
 		EF24FEF6211C3B160069F83A /* PhotoWallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoWallController.swift; path = PhotoWall/Controllers/PhotoWallController.swift; sourceTree = SOURCE_ROOT; };
 		EF24FEF7211C3B160069F83A /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = PhotoWall/Controllers/CameraController.swift; sourceTree = SOURCE_ROOT; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				EF3F6A352125CCA200498C00 /* AssetCell.swift */,
+				EF12C5452136E98E0056406F /* ARButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF12C5462136E98E0056406F /* ARButton.swift in Sources */,
 				EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
 				EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */,

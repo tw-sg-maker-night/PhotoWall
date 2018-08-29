@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Runs all the tests
+### ios add_device
+```
+fastlane ios add_device
+```
+Register new device
 
 ----
 

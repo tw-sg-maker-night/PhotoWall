@@ -15,7 +15,7 @@
 
 default_platform(:ios)
 
-platform :ios do  
+platform :ios do
   before_all do
     cocoapods
   end
@@ -23,5 +23,15 @@ platform :ios do
   desc "Runs all the tests"
   lane :test do
     scan
+  end
+
+  desc "Register new device"
+  lane :add_device do
+    register_devices(
+      devices: { 'xxx' => 'xxxx' },
+      team_id: 'LL62P32G5C',
+      username: 'charris@thoughtworks.com'
+    )
+    # Then run: fastlane match development --force_for_new_devices
   end
 end

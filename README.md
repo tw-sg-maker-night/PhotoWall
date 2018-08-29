@@ -8,3 +8,7 @@
 - `bundle`
 - `pod install`
 - `fastlane match development`
+
+
+# Icons
+Most icons from https://icons8.com/
