@@ -4,8 +4,6 @@
 <dict>
 	<key>AppConfig</key>
 	<dict/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>The app will store recorded videos in your photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -26,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>This application will use the camera for Augmented Reality.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>The app will store recorded videos in your photo library</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

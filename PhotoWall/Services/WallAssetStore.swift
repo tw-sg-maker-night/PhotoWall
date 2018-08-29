@@ -18,6 +18,9 @@ class WallAssetStore {
         self.fileManager = fileManager
         let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         self.baseUrl = documentsUrl.appendingPathComponent(groupId)
+        if !fileManager.fileExists(atPath: baseUrl.path) {
+            try? fileManager.createDirectory(at: baseUrl, withIntermediateDirectories: false, attributes: nil)
+        }
     }
     
     func loadAssets() -> [WallAsset] {
