@@ -197,6 +197,104 @@
             </objects>
             <point key="canvasLocation" x="842" y="1990"/>
         </scene>
+        <!--Asset Controller-->
+        <scene sceneID="8tu-M9-RYb">
+            <objects>
+                <viewController id="YfZ-2q-QVf" customClass="AssetController" customModule="PhotoWall" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bOy-Hl-Tqq">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-Fa-mBr">
+                                <rect key="frame" x="121.5" y="32" width="424.5" height="283"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2SH-Fa-mBr" secondAttribute="height" multiplier="3:2" id="wsE-a2-zp2"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Iq-6DU">
+                                <rect key="frame" x="121.5" y="32" width="424.5" height="283"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1f0-Iq-6DU" secondAttribute="height" multiplier="3:2" id="vaH-bg-Xl9"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="npL-bw-Frx">
+                                <rect key="frame" x="183.5" y="325" width="300" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-7q-Gj7" userLabel="Delete" customClass="ARButton" customModule="PhotoWall" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="iWC-88-xyM"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="delete"/>
+                                        <connections>
+                                            <action selector="deleteClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="y7f-i1-NGE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1e-65-JbY" userLabel="Upload" customClass="ARButton" customModule="PhotoWall" customModuleProvider="target">
+                                        <rect key="frame" x="83.5" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="gpO-MR-phw"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="upload"/>
+                                        <connections>
+                                            <action selector="uploadClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="ElZ-wS-eni"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3x-rs-6AF" userLabel="Print" customClass="ARButton" customModule="PhotoWall" customModuleProvider="target">
+                                        <rect key="frame" x="166.5" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="1EA-r1-jJp"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="print"/>
+                                        <connections>
+                                            <action selector="printClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="Mxe-yX-xxp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sg7-8g-D9E" userLabel="Play" customClass="ARButton" customModule="PhotoWall" customModuleProvider="target">
+                                        <rect key="frame" x="250" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="4Cz-rL-ilW"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="play"/>
+                                        <connections>
+                                            <action selector="playClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="9f8-dE-4rS"/>
+                                            <action selector="uploadClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="6Ch-Mv-H99"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gH6-PR-5HN"/>
+                                    <constraint firstAttribute="width" constant="300" id="xTE-QY-T1t"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1f0-Iq-6DU" firstAttribute="top" secondItem="dxO-EV-alD" secondAttribute="top" id="1zm-Yo-GTA"/>
+                            <constraint firstItem="1f0-Iq-6DU" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="6SK-nA-22T"/>
+                            <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="2SH-Fa-mBr" secondAttribute="bottom" constant="60" id="9gu-kh-6Ry"/>
+                            <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="1f0-Iq-6DU" secondAttribute="bottom" constant="60" id="Hp2-LT-uJ9"/>
+                            <constraint firstItem="2SH-Fa-mBr" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="Myg-rd-Zny"/>
+                            <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="npL-bw-Frx" secondAttribute="bottom" id="lL6-g1-wau"/>
+                            <constraint firstItem="npL-bw-Frx" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="lbe-0v-oIq"/>
+                            <constraint firstItem="2SH-Fa-mBr" firstAttribute="top" secondItem="dxO-EV-alD" secondAttribute="top" id="zOl-aH-sNG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dxO-EV-alD"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="1f0-Iq-6DU" id="yZj-sj-VuF"/>
+                        <outlet property="videoView" destination="2SH-Fa-mBr" id="cfK-0e-NFS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ac4-o7-3sI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="841.52923538230891" y="2965.5999999999999"/>
+        </scene>
         <!--Library Controller-->
         <scene sceneID="RKG-RQ-uSi">
             <objects>
@@ -247,6 +345,9 @@
                         </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="qs2-lN-KZ6"/>
+                    <connections>
+                        <segue destination="YfZ-2q-QVf" kind="show" identifier="ViewAsset" id="J9P-QS-FFN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgV-RO-lkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -259,7 +360,11 @@
         <image name="augmented-reality" width="50" height="50"/>
         <image name="back" width="50" height="50"/>
         <image name="camera" width="50" height="50"/>
+        <image name="delete" width="50" height="50"/>
         <image name="gallery" width="50" height="50"/>
+        <image name="play" width="50" height="50"/>
+        <image name="print" width="50" height="50"/>
         <image name="record" width="50" height="50"/>
+        <image name="upload" width="50" height="50"/>
     </resources>
 </document>

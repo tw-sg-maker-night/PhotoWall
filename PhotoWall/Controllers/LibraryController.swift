@@ -24,7 +24,7 @@ class LibraryController: UICollectionViewController {
         super.viewDidLoad()
         navigationItem.title = "Library"
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashClicked))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(uploadClicked))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(uploadClicked))
         
         collectionView?.allowsMultipleSelection = true
         collectionView?.allowsSelection = true
@@ -65,6 +65,13 @@ class LibraryController: UICollectionViewController {
             }
         }
         collectionView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AssetController {
+            controller.wallAsset = selectedAssets.first
+            selectedAssets.removeAll()
+        }
     }
 }
 
@@ -111,7 +118,8 @@ extension LibraryController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.reloadData()
+//        collectionView.reloadData()
+        self.performSegue(withIdentifier: "ViewAsset", sender: self)
     }
 }
 
@@ -146,4 +154,3 @@ private extension LibraryController {
         return assets[indexPath.row]
     }
 }
-
