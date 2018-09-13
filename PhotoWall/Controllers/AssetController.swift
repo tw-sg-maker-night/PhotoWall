@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 import AVFoundation
+import AWSCore
 
 class AssetController: UIViewController {
 
     @IBOutlet var videoView: UIView!
     @IBOutlet var imageView: UIImageView!
+    
+//    var assetStore: WallAssetStore
+//    var remoteAssetStore: RemoteStore
     
     var wallAsset: WallAsset?
     var videoPlayer: AVPlayer?
@@ -41,11 +45,25 @@ class AssetController: UIViewController {
     @IBAction
     func deleteClicked() {
         print("deleteClicked")
+        if let asset = wallAsset {
+            WallAssetStore().delete(asset: asset)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction
     func uploadClicked() {
         print("uploadClicked")
+        if let asset = wallAsset {
+            RemoteStore().uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
+                print("Upload Complete!")
+                DispatchQueue.main.async {
+                    let controller = UIAlertController(title: "Upload Complete!", message: nil, preferredStyle: .alert)
+                    controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                }
+                return nil
+            }
+        }
     }
     
     @IBAction
