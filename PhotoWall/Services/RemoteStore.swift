@@ -179,6 +179,13 @@ class RemoteStore {
         identifier.key = key
         return identifier
     }
+    
+    func assetExists(asset: WallAsset) -> AWSTask<AWSS3HeadObjectOutput> {
+        let request = AWSS3HeadObjectRequest()!
+        request.bucket = self.bucket
+        request.key = "\(self.groupId)/\(asset.identifier)/manifest.json"
+        return self.s3.headObject(request)
+    }
 }
 
 enum RemoteStoreError: Error {

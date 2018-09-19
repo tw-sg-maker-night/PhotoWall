@@ -40,7 +40,18 @@ class AssetController: UIViewController {
             NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: videoPlayer!.currentItem, queue: nil) { _ in
                 self.imageView?.isHidden = false
             }
-            uploadButton.isHidden = true
+            
+            RemoteStore().assetExists(asset: asset).continueWith { task -> Void in
+                if let _ = task.error {
+                    DispatchQueue.main.async {
+                        self.uploadButton.isHidden = false
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.uploadButton.isHidden = true
+                    }
+                }
+            }
         }
     }
     
