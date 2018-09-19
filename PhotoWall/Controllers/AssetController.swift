@@ -16,6 +16,8 @@ class AssetController: UIViewController {
     @IBOutlet var videoView: UIView!
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet var uploadButton: UIButton!
+    
 //    var assetStore: WallAssetStore
 //    var remoteAssetStore: RemoteStore
     
@@ -32,6 +34,7 @@ class AssetController: UIViewController {
             NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: videoPlayer!.currentItem, queue: nil) { _ in
                 self.imageView?.isHidden = false
             }
+            uploadButton.isHidden = true
         }
     }
     
@@ -69,6 +72,19 @@ class AssetController: UIViewController {
     @IBAction
     func printClicked() {
         print("printClicked")
+        if let imageUrl = wallAsset?.imageUrl {
+            if UIPrintInteractionController.canPrint(imageUrl) {
+                let printInfo = UIPrintInfo(dictionary: nil)
+                printInfo.jobName = imageUrl.lastPathComponent
+                printInfo.outputType = .photo
+                
+                let printController = UIPrintInteractionController.shared
+                printController.printInfo = printInfo
+                printController.showsNumberOfCopies = false
+                printController.printingItem = imageUrl
+                printController.present(animated: true)
+            }
+        }
     }
     
     @IBAction
@@ -77,6 +93,7 @@ class AssetController: UIViewController {
         
         if videoLayer == nil {
             videoLayer = AVPlayerLayer(player: videoPlayer!)
+            videoLayer?.videoGravity = .resizeAspectFill
             videoLayer!.frame = videoView.bounds
             videoView.layer.addSublayer(videoLayer!)
         }

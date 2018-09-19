@@ -127,7 +127,9 @@ class RemoteStore {
     
     func uploadAsset(asset: WallAsset) -> AWSTask<AnyObject> {
         return getAssetFileNames(for: asset.identifier)!.continueOnSuccessWith { task in
+            print("getAssetFileNames done...")            
             if let fileNames = task.result as? [String] {
+                print("fileName = \(fileNames)")
                 var tasks = [AWSTask<AnyObject>]()
                 if !fileNames.contains(asset.imageFileName) {
                     let uploadRequest = AWSS3TransferManagerUploadRequest()!

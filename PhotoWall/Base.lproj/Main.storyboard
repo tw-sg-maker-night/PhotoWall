@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ey-az-691">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3ey-az-691">
     <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -206,14 +206,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-Fa-mBr">
-                                <rect key="frame" x="121.5" y="32" width="424.5" height="283"/>
+                                <rect key="frame" x="76.5" y="32" width="514.5" height="343"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2SH-Fa-mBr" secondAttribute="height" multiplier="3:2" id="wsE-a2-zp2"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Iq-6DU">
-                                <rect key="frame" x="121.5" y="32" width="424.5" height="283"/>
+                                <rect key="frame" x="76.5" y="32" width="514.5" height="343"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1f0-Iq-6DU" secondAttribute="height" multiplier="3:2" id="vaH-bg-Xl9"/>
                                 </constraints>
@@ -277,8 +277,8 @@
                         <constraints>
                             <constraint firstItem="1f0-Iq-6DU" firstAttribute="top" secondItem="dxO-EV-alD" secondAttribute="top" id="1zm-Yo-GTA"/>
                             <constraint firstItem="1f0-Iq-6DU" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="6SK-nA-22T"/>
-                            <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="2SH-Fa-mBr" secondAttribute="bottom" constant="60" id="9gu-kh-6Ry"/>
-                            <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="1f0-Iq-6DU" secondAttribute="bottom" constant="60" id="Hp2-LT-uJ9"/>
+                            <constraint firstAttribute="bottom" secondItem="2SH-Fa-mBr" secondAttribute="bottom" id="9gu-kh-6Ry"/>
+                            <constraint firstAttribute="bottom" secondItem="1f0-Iq-6DU" secondAttribute="bottom" id="Hp2-LT-uJ9"/>
                             <constraint firstItem="2SH-Fa-mBr" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="Myg-rd-Zny"/>
                             <constraint firstItem="dxO-EV-alD" firstAttribute="bottom" secondItem="npL-bw-Frx" secondAttribute="bottom" id="lL6-g1-wau"/>
                             <constraint firstItem="npL-bw-Frx" firstAttribute="centerX" secondItem="dxO-EV-alD" secondAttribute="centerX" id="lbe-0v-oIq"/>
@@ -288,6 +288,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="1f0-Iq-6DU" id="yZj-sj-VuF"/>
+                        <outlet property="uploadButton" destination="o1e-65-JbY" id="XPI-Qd-DIB"/>
                         <outlet property="videoView" destination="2SH-Fa-mBr" id="cfK-0e-NFS"/>
                     </connections>
                 </viewController>
