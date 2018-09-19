@@ -39,8 +39,26 @@ class LibraryController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // TODO: Move the loading of assets into a background thread and display a loading indicator
-        assets = WallAssetStore().loadAssets()
-        collectionView?.reloadData()
+        if assets.count == 0 {
+            assets = WallAssetStore().loadAssets()
+            collectionView?.reloadData()
+        } else if selectedAssets.count > 0 {
+            if let indexPath = indexPathFor(asset: selectedAssets.first) {
+                selectedAssets.removeAll()
+                collectionView.performBatchUpdates({
+                    assets.remove(at: indexPath.row)
+                    self.collectionView.deleteItems(at: [indexPath])
+                })
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? AssetController {
+            controller.delegate = self
+            controller.wallAsset = selectedAssets.first
+            selectedAssets.removeAll()
+        }
     }
     
     @objc
@@ -66,12 +84,14 @@ class LibraryController: UICollectionViewController {
         }
         collectionView.reloadData()
     }
+}
+
+extension LibraryController: AssetControllerDelegate {
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? AssetController {
-            controller.wallAsset = selectedAssets.first
-            selectedAssets.removeAll()
-        }
+    func didRemoveAsset(_ asset: WallAsset) {
+        print("didRemoveAsset")
+        selectedAssets = [asset]
+        self.navigationController?.popToViewController(self, animated: true)
     }
 }
 
@@ -87,7 +107,7 @@ extension LibraryController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssetCell", for: indexPath) as! AssetCell
-        let asset = assetForIndexPath(indexPath: indexPath)
+        let asset = assetFor(indexPath: indexPath)
         cell.backgroundColor = UIColor.white
         cell.imageView.image = asset.image()
         cell.checkedView.isHidden = !isSelected(asset)
@@ -99,7 +119,8 @@ extension LibraryController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let asset = assetForIndexPath(indexPath: indexPath)
+        print("shouldSelectItemAt \(indexPath)")
+        let asset = assetFor(indexPath: indexPath)
         if isSelected(asset) {
             selectedAssets.removeAll(where: { $0 == asset })
         } else {
@@ -108,17 +129,8 @@ extension LibraryController {
         return true
     }
     
-    func playAssetVideo(asset: WallAsset) {
-        let player = AVPlayer(url: asset.videoUrl)
-        let controller = AVPlayerViewController()
-        controller.player = player
-        present(controller, animated: true) {
-            player.play()
-        }
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.reloadData()
+        print("didSelectItemAt \(indexPath)")
         self.performSegue(withIdentifier: "ViewAsset", sender: self)
     }
 }
@@ -150,7 +162,14 @@ extension LibraryController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension LibraryController {
-    func assetForIndexPath(indexPath: IndexPath) -> WallAsset {
+    func assetFor(indexPath: IndexPath) -> WallAsset {
         return assets[indexPath.row]
+    }
+    
+    func indexPathFor(asset: WallAsset?) -> IndexPath? {
+        guard let asset = asset, let index = assets.firstIndex(of: asset) else {
+            return nil
+        }
+        return IndexPath(row: index, section: 0)
     }
 }

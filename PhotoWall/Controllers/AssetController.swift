@@ -11,6 +11,10 @@ import UIKit
 import AVFoundation
 import AWSCore
 
+protocol AssetControllerDelegate: class {
+    func didRemoveAsset(_ asset: WallAsset)
+}
+
 class AssetController: UIViewController {
 
     @IBOutlet var videoView: UIView!
@@ -24,6 +28,8 @@ class AssetController: UIViewController {
     var wallAsset: WallAsset?
     var videoPlayer: AVPlayer?
     var videoLayer: AVPlayerLayer?
+    
+    weak var delegate: AssetControllerDelegate?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -49,9 +55,11 @@ class AssetController: UIViewController {
     func deleteClicked() {
         print("deleteClicked")
         if let asset = wallAsset {
-            WallAssetStore().delete(asset: asset)
+            RemoteStore().deleteAsset(asset: asset).continueOnSuccessWith { task -> Void in
+                WallAssetStore().delete(asset: asset)
+            }
+            delegate?.didRemoveAsset(asset)
         }
-        navigationController?.popViewController(animated: true)
     }
     
     @IBAction

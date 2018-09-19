@@ -125,6 +125,7 @@ class RemoteStore {
         return nil
     }
     
+    // TODO: refactor!
     func uploadAsset(asset: WallAsset) -> AWSTask<AnyObject> {
         return getAssetFileNames(for: asset.identifier)!.continueOnSuccessWith { task in
             print("getAssetFileNames done...")            
@@ -157,6 +158,26 @@ class RemoteStore {
             }
             return AWSTask(error: RemoteStoreError.genericError) as AWSTask<AnyObject>
         }
+    }
+    
+    // TODO: refactor!
+    func deleteAsset(asset: WallAsset) -> AWSTask<AWSS3DeleteObjectsOutput> {
+        let request = AWSS3DeleteObjectsRequest()!
+        request.bucket = self.bucket
+        let toRemove = AWSS3Remove()!
+        toRemove.objects = [
+            awsIdentifierFor(key: "\(self.groupId)/\(asset.identifier)/\(asset.imageFileName)"),
+            awsIdentifierFor(key: "\(self.groupId)/\(asset.identifier)/\(asset.videoFileName)"),
+            awsIdentifierFor(key: "\(self.groupId)/\(asset.identifier)/manifest.json")
+        ]
+        request.remove = toRemove
+        return self.s3.deleteObjects(request)
+    }
+    
+    private func awsIdentifierFor(key: String) -> AWSS3ObjectIdentifier {
+        let identifier = AWSS3ObjectIdentifier()!
+        identifier.key = key
+        return identifier
     }
 }
 
