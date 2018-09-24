@@ -11,4 +11,5 @@ import Foundation
 struct AppConfig {
     let awsAccessKey: String
     let awsSecretKey: String
+    let bucketName: String
 }

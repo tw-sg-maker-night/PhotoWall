@@ -21,7 +21,8 @@ class AppConfigLoader {
     func load() -> AppConfig {
         return AppConfig(
             awsAccessKey: getKey("AWSAccessKey")!,
-            awsSecretKey: getKey("AWSSecretKey")!
+            awsSecretKey: getKey("AWSSecretKey")!,
+            bucketName: getKey("BucketName")!
         )
     }
     

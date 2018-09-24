@@ -15,7 +15,7 @@ class RemoteStore {
     let s3: AWSS3
     let assetStore: WallAssetStore
     let groupId: String
-    let bucket: String = "photo-wall-assets"
+    let bucket: String
 
     init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore(), appConfig: AppConfig = AppConfigLoader().load()) {
         let credentials = AWSStaticCredentialsProvider(accessKey: appConfig.awsAccessKey, secretKey: appConfig.awsSecretKey)
@@ -25,6 +25,7 @@ class RemoteStore {
         self.transferManager = AWSS3TransferManager.default()
         self.assetStore = assetStore
         self.groupId = groupId
+        self.bucket = appConfig.bucketName
     }
 
     func downloadAssets() -> AWSTask<AnyObject>? {
@@ -88,7 +89,7 @@ class RemoteStore {
             return AWSTask(result: nil)
         }
         let request = AWSS3TransferManagerDownloadRequest()!
-        request.bucket = "photo-wall-assets"
+        request.bucket = bucket
         request.key = "\(groupId)/\(name)/\(fileName)"
         request.downloadingFileURL = assetStore.fileUrl(fileName: fileName, for: name)
         return self.transferManager.download(request)
