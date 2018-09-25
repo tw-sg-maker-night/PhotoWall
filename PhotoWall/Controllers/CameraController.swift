@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol CameraControllerDelegate: class {
+    
+}
+
 class CameraController: UIViewController {
     
     @IBOutlet var previewView: UIView!
@@ -18,6 +22,15 @@ class CameraController: UIViewController {
     var videoOutput: AVCaptureMovieFileOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var assetIdentifier: String!
+    weak var delegate: CameraControllerDelegate?
+    
+    class func new(delegate: CameraControllerDelegate) -> CameraController {
+//        let controller = CameraController()
+        // TODO: Get rid of the storyboard
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Camera") as! CameraController
+        controller.delegate = delegate
+        return controller
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

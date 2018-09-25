@@ -12,4 +12,11 @@ struct AppConfig {
     let awsAccessKey: String
     let awsSecretKey: String
     let bucketName: String
+    
+    let googleClientId: String
+    let googleScopes: [String]
+    let googleWebClientId: String
+    let googleWebClientSecret: String
+    
+    let baseUrl: URL
 }

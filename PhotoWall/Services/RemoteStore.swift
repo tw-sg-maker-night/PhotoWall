@@ -64,7 +64,10 @@ class RemoteStore {
                     print("Error: \(task.error!.localizedDescription)")
                     return nil
                 }
-                let prefixes: [String] = result.commonPrefixes!.map { object in
+                guard let commonPrefixes = result.commonPrefixes else {
+                    return nil
+                }
+                let prefixes: [String] = commonPrefixes.map { object in
                     if let prefix = object.prefix {
                         return prefix.replacingOccurrences(of: "\(self.groupId)/", with: "").replacingOccurrences(of: "/", with: "")
                     }

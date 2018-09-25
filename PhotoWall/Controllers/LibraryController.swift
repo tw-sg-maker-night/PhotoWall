@@ -12,6 +12,10 @@ import AVKit
 import AVFoundation
 import AWSCore
 
+protocol LibraryControllerDelegate: class {
+    
+}
+
 class LibraryController: UICollectionViewController {
     
     var assets: [WallAsset] = []
@@ -19,6 +23,15 @@ class LibraryController: UICollectionViewController {
     
     let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
     let itemsPerRow: CGFloat = 4
+    weak var delegate: LibraryControllerDelegate?
+    
+    class func new(delegate: LibraryControllerDelegate) -> LibraryController {
+//        let controller = LibraryController()
+        // TODO: Get rid of the storyboard
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Library") as! LibraryController
+        controller.delegate = delegate
+        return controller
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

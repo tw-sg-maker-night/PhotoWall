@@ -22,7 +22,12 @@ class AppConfigLoader {
         return AppConfig(
             awsAccessKey: getKey("AWSAccessKey")!,
             awsSecretKey: getKey("AWSSecretKey")!,
-            bucketName: getKey("BucketName")!
+            bucketName: getKey("BucketName")!,
+            googleClientId: getKey("GoogleClientID")!,
+            googleScopes: getKey("GoogleScopes")!,
+            googleWebClientId: getKey("GoogleClientID")!,
+            googleWebClientSecret: getKey("GoogleClientID")!,
+            baseUrl: URL(string: getKey("BaseURL")!)!
         )
     }
     

@@ -12,12 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var coordinator: Coordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        startApp()
         return true
     }
 
+    func startApp() {
+        let navController = UINavigationController(rootViewController: UIViewController())
+        navController.navigationBar.barStyle = .default
+        navController.navigationBar.barTintColor = .white
+        self.coordinator = Coordinator(navController: navController)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
+        self.coordinator?.start()
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -39,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

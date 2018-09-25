@@ -21,7 +21,8 @@ class ARButton: UIButton {
     }
     
     private func setup() {
-        self.layer.cornerRadius = self.frame.size.width / 2
+//        self.layer.cornerRadius = self.frame.size.width / 2
+        self.layer.cornerRadius = 33
         self.layer.backgroundColor = UIColor(white: 1, alpha: 0.5).cgColor
     }
 }

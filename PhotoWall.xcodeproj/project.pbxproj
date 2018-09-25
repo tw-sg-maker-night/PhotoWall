@@ -24,6 +24,23 @@
 		EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A352125CCA200498C00 /* AssetCell.swift */; };
 		EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */; };
 		EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */; };
+		EFA88E57215A684600BDA5A9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E55215A684600BDA5A9 /* LocationService.swift */; };
+		EFA88E58215A684600BDA5A9 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E56215A684600BDA5A9 /* LocationClient.swift */; };
+		EFA88E5B215A688200BDA5A9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E59215A688200BDA5A9 /* Location.swift */; };
+		EFA88E5C215A688200BDA5A9 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E5A215A688200BDA5A9 /* Country.swift */; };
+		EFA88E5E215A69D900BDA5A9 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E5D215A69D900BDA5A9 /* BaseService.swift */; };
+		EFA88E60215A6A4A00BDA5A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E5F215A6A4A00BDA5A9 /* Constants.swift */; };
+		EFA88E67215A6AFA00BDA5A9 /* LocationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E65215A6AFA00BDA5A9 /* LocationSpec.swift */; };
+		EFA88E68215A6AFA00BDA5A9 /* CountrySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E66215A6AFA00BDA5A9 /* CountrySpec.swift */; };
+		EFA88E6A215A6D1000BDA5A9 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E69215A6D1000BDA5A9 /* AuthProvider.swift */; };
+		EFA88E6C215A801F00BDA5A9 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E6B215A801F00BDA5A9 /* GoogleAuthService.swift */; };
+		EFA88E6E215A834A00BDA5A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E6D215A834A00BDA5A9 /* Coordinator.swift */; };
+		EFA88E70215A83BD00BDA5A9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E6F215A83BD00BDA5A9 /* LoginController.swift */; };
+		EFA88E72215A840F00BDA5A9 /* LocationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E71215A840F00BDA5A9 /* LocationListController.swift */; };
+		EFA88E75215A845100BDA5A9 /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E74215A845100BDA5A9 /* LocationDataSource.swift */; };
+		EFA88E77215A888C00BDA5A9 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA88E76215A888C00BDA5A9 /* Login.xib */; };
+		EFA88E79215A8CD900BDA5A9 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E78215A8CD900BDA5A9 /* UINavigationController.swift */; };
+		EFA88E7B215A9D8100BDA5A9 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA88E7A215A9D8100BDA5A9 /* Loading.xib */; };
 		EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900D920E3AFF30033B63B /* AppDelegate.swift */; };
 		EFA900E120E3AFF30033B63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA900DF20E3AFF30033B63B /* Main.storyboard */; };
 		EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E220E3AFF90033B63B /* Assets.xcassets */; };
@@ -65,6 +82,23 @@
 		EF3F6A352125CCA200498C00 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStringConvertable.swift; sourceTree = "<group>"; };
 		EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
+		EFA88E55215A684600BDA5A9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		EFA88E56215A684600BDA5A9 /* LocationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
+		EFA88E59215A688200BDA5A9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		EFA88E5A215A688200BDA5A9 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		EFA88E5D215A69D900BDA5A9 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		EFA88E5F215A6A4A00BDA5A9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = PhotoWall/Constants.swift; sourceTree = SOURCE_ROOT; };
+		EFA88E65215A6AFA00BDA5A9 /* LocationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSpec.swift; sourceTree = "<group>"; };
+		EFA88E66215A6AFA00BDA5A9 /* CountrySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountrySpec.swift; sourceTree = "<group>"; };
+		EFA88E69215A6D1000BDA5A9 /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		EFA88E6B215A801F00BDA5A9 /* GoogleAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAuthService.swift; sourceTree = "<group>"; };
+		EFA88E6D215A834A00BDA5A9 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		EFA88E6F215A83BD00BDA5A9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		EFA88E71215A840F00BDA5A9 /* LocationListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationListController.swift; sourceTree = "<group>"; };
+		EFA88E74215A845100BDA5A9 /* LocationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
+		EFA88E76215A888C00BDA5A9 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
+		EFA88E78215A8CD900BDA5A9 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		EFA88E7A215A9D8100BDA5A9 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		EFA900D620E3AFF30033B63B /* PhotoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900D920E3AFF30033B63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA900E020E3AFF30033B63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,9 +147,11 @@
 		EF0CBBD92111D6730067E9AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EF24FEF7211C3B160069F83A /* CameraController.swift */,
-				EF24FEF6211C3B160069F83A /* PhotoWallController.swift */,
 				EF0E5255212467C800B5BEB0 /* LoadingController.swift */,
+				EFA88E6F215A83BD00BDA5A9 /* LoginController.swift */,
+				EFA88E71215A840F00BDA5A9 /* LocationListController.swift */,
+				EF24FEF6211C3B160069F83A /* PhotoWallController.swift */,
+				EF24FEF7211C3B160069F83A /* CameraController.swift */,
 				EF3F6A322125C16D00498C00 /* LibraryController.swift */,
 				EF12C5492136F4050056406F /* AssetController.swift */,
 			);
@@ -128,6 +164,8 @@
 				EF24FEE9211BC1D10069F83A /* WallAsset.swift */,
 				EF24FF01211D67160069F83A /* WallAssetManifest.swift */,
 				EF3F6A302125BFF400498C00 /* AppConfig.swift */,
+				EFA88E5A215A688200BDA5A9 /* Country.swift */,
+				EFA88E59215A688200BDA5A9 /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +176,11 @@
 				EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */,
 				EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */,
 				EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */,
+				EFA88E55215A684600BDA5A9 /* LocationService.swift */,
+				EFA88E56215A684600BDA5A9 /* LocationClient.swift */,
+				EFA88E5D215A69D900BDA5A9 /* BaseService.swift */,
+				EFA88E69215A6D1000BDA5A9 /* AuthProvider.swift */,
+				EFA88E6B215A801F00BDA5A9 /* GoogleAuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -145,6 +188,8 @@
 		EF3F6A342125CC8E00498C00 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFA88E76215A888C00BDA5A9 /* Login.xib */,
+				EFA88E7A215A9D8100BDA5A9 /* Loading.xib */,
 				EF3F6A352125CCA200498C00 /* AssetCell.swift */,
 				EF12C5452136E98E0056406F /* ARButton.swift */,
 			);
@@ -155,8 +200,26 @@
 			isa = PBXGroup;
 			children = (
 				EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */,
+				EFA88E78215A8CD900BDA5A9 /* UINavigationController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EFA88E64215A6AFA00BDA5A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFA88E65215A6AFA00BDA5A9 /* LocationSpec.swift */,
+				EFA88E66215A6AFA00BDA5A9 /* CountrySpec.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFA88E73215A845100BDA5A9 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				EFA88E74215A845100BDA5A9 /* LocationDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		EFA900CD20E3AFF20033B63B = {
@@ -187,7 +250,10 @@
 				EF24FEFE211C43B40069F83A /* Services */,
 				EF24FEE8211BC10C0069F83A /* Models */,
 				EF0CBBD92111D6730067E9AB /* Controllers */,
+				EFA88E73215A845100BDA5A9 /* DataSources */,
+				EFA88E5F215A6A4A00BDA5A9 /* Constants.swift */,
 				EFA900D920E3AFF30033B63B /* AppDelegate.swift */,
+				EFA88E6D215A834A00BDA5A9 /* Coordinator.swift */,
 				EFA900DF20E3AFF30033B63B /* Main.storyboard */,
 				EFA900E220E3AFF90033B63B /* Assets.xcassets */,
 				EFA900E420E3AFF90033B63B /* LaunchScreen.storyboard */,
@@ -200,6 +266,7 @@
 		EFA900EF20E3AFF90033B63B /* PhotoWallTests */ = {
 			isa = PBXGroup;
 			children = (
+				EFA88E64215A6AFA00BDA5A9 /* Models */,
 				EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */,
 				EFA900F220E3AFFA0033B63B /* Info.plist */,
 			);
@@ -228,6 +295,7 @@
 				EFA900D320E3AFF30033B63B /* Frameworks */,
 				EFA900D420E3AFF30033B63B /* Resources */,
 				0A54C37D8B4294C167693C26 /* [CP] Embed Pods Frameworks */,
+				D80E61A4235B817E2A6ADD33 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,8 +371,10 @@
 			files = (
 				EF3F6A2D2125B81300498C00 /* Secrets.plist in Resources */,
 				EFA900E620E3AFF90033B63B /* LaunchScreen.storyboard in Resources */,
+				EFA88E7B215A9D8100BDA5A9 /* Loading.xib in Resources */,
 				EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */,
 				EFA900E120E3AFF30033B63B /* Main.storyboard in Resources */,
+				EFA88E77215A888C00BDA5A9 /* Login.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,11 +397,23 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,6 +476,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D80E61A4235B817E2A6ADD33 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PhotoWall/Pods-PhotoWall-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -405,17 +505,30 @@
 				EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
 				EF12C54A2136F4050056406F /* AssetController.swift in Sources */,
+				EFA88E5B215A688200BDA5A9 /* Location.swift in Sources */,
 				EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */,
+				EFA88E72215A840F00BDA5A9 /* LocationListController.swift in Sources */,
+				EFA88E6C215A801F00BDA5A9 /* GoogleAuthService.swift in Sources */,
 				EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */,
+				EFA88E6E215A834A00BDA5A9 /* Coordinator.swift in Sources */,
+				EFA88E5C215A688200BDA5A9 /* Country.swift in Sources */,
+				EFA88E5E215A69D900BDA5A9 /* BaseService.swift in Sources */,
 				EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */,
+				EFA88E79215A8CD900BDA5A9 /* UINavigationController.swift in Sources */,
+				EFA88E6A215A6D1000BDA5A9 /* AuthProvider.swift in Sources */,
+				EFA88E75215A845100BDA5A9 /* LocationDataSource.swift in Sources */,
 				EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */,
+				EFA88E60215A6A4A00BDA5A9 /* Constants.swift in Sources */,
 				EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */,
 				EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */,
+				EFA88E57215A684600BDA5A9 /* LocationService.swift in Sources */,
 				EF3F6A332125C16D00498C00 /* LibraryController.swift in Sources */,
+				EFA88E70215A83BD00BDA5A9 /* LoginController.swift in Sources */,
 				EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */,
 				EF3F6A312125BFF400498C00 /* AppConfig.swift in Sources */,
 				EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */,
 				EF3F6A2F2125BFA700498C00 /* AppConfigLoader.swift in Sources */,
+				EFA88E58215A684600BDA5A9 /* LocationClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +536,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA88E68215A6AFA00BDA5A9 /* CountrySpec.swift in Sources */,
 				EFA900F120E3AFFA0033B63B /* PhotoWallTests.swift in Sources */,
+				EFA88E67215A6AFA00BDA5A9 /* LocationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,7 +736,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PhotoWallTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,6 +747,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.PhotoWallTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoWall.app/PhotoWall";
@@ -642,7 +760,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PhotoWallTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -651,6 +770,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.PhotoWallTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoWall.app/PhotoWall";

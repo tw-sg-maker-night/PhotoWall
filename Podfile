@@ -10,8 +10,14 @@ target 'PhotoWall' do
   use_frameworks!
 
   # Pods for PhotoWall
-  # pod 'GoogleSignIn'
   pod 'AWSS3', '~> 2.6.26'
+  pod 'Alamofire'
+  pod 'PromiseKit/CorePromise', '~> 6.0'
+  pod 'PromiseKit/Alamofire', '~> 6.0'
+  pod 'PromiseKit/CoreLocation', '~> 6.0'
+  pod 'GoogleSignIn'
+  # Note: Using a specific commit form PKHUD until they release 5.2 which should support Swift 4.2
+  pod 'PKHUD', :git => 'https://github.com/pkluz/PKHUD.git', :commit => 'f80fac74f0'
 
   target 'PhotoWallTests' do
     inherit! :search_paths

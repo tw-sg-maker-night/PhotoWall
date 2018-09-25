@@ -10,16 +10,39 @@ import Foundation
 import SceneKit
 import ARKit
 
+protocol PhotoWallDelegate: class {
+    func displayCamera()
+    func displayLibrary()
+    func displayLocationList()
+}
+
 class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var locationButton: UIButton!
     
     var wallAssets: [WallAsset] = []
     var players: [String: AVPlayer] = [:]
+    var location: Location?
+    weak var delegate: PhotoWallDelegate?
+    
+    class func new(location: Location, delegate: PhotoWallDelegate) -> PhotoWallController {
+//        let controller = PhotoWallController()
+        // TODO: Get rid of the storyboard
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoWall") as! PhotoWallController
+        controller.delegate = delegate
+        controller.location = location
+        return controller
+    }
     
     @IBAction func addClicked() {
         sceneView.session.pause()
         performSegue(withIdentifier: "ShowCamera", sender: self)
+    }
+    
+    @IBAction func locationClicked() {
+        sceneView.session.pause()
+        delegate?.displayLocationList()        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,7 +75,9 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
+        if let location = location {
+            locationButton.setTitle(location.office, for: .normal)
+        }
         loadWallAssets()
         for asset in wallAssets {
             self.players[asset.identifier] = loadPlayer(for: asset)

@@ -31,6 +31,14 @@ class AssetController: UIViewController {
     
     weak var delegate: AssetControllerDelegate?
     
+    class func new(delegate: AssetControllerDelegate) -> AssetController {
+//        let controller = AssetController()
+        // TODO: Get rid of the storyboard
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Asset") as! AssetController
+        controller.delegate = delegate
+        return controller
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
