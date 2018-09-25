@@ -28,10 +28,9 @@ platform :ios do
   desc "Register new device"
   lane :add_device do
     register_devices(
-      devices: { 'xxx' => 'xxxx' },
+      devices: { '<device name>' => '<device identifier>' },
       team_id: 'LL62P32G5C',
       username: 'charris@thoughtworks.com'
     )
-    # Then run: fastlane match development --force_for_new_devices
   end
 end
