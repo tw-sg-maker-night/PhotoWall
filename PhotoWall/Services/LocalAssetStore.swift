@@ -9,12 +9,30 @@
 import Foundation
 import UIKit
 
-class WallAssetStore {
+protocol LocalAssetStore {
+    var groupId: String { get }
+    //TODO: Need to review all these public methdos consolidate
+    func loadAssets() -> [WallAsset]
+    func createAssetDir(name: String)
+    func storeImage(_ image: UIImage, for name: String)
+    func storeVideo(_ url: URL, for name: String)
+    func delete(asset: WallAsset)
+    func loadOrCreateManifest(for name: String) -> WallAssetManifest?
+    func loadManifest(for name: String) -> WallAssetManifest?
+    func manifestUrl(for name: String) -> URL
+    func fileUrl(fileName: String, for name: String) -> URL
+    func assetFolder(for name: String) -> URL
+    func fileExists(_ fileName: String, for name: String) -> Bool
+}
+
+class WallAssetStore: LocalAssetStore {
     
+    let groupId: String
     let fileManager: FileManager
     let baseUrl: URL
     
     init(groupId: String = "Singapore", fileManager: FileManager = FileManager.default) {
+        self.groupId = groupId
         self.fileManager = fileManager
         let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         self.baseUrl = documentsUrl.appendingPathComponent(groupId)

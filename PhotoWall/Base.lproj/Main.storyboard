@@ -74,7 +74,7 @@
                                 <inset key="imageEdgeInsets" minX="12" minY="12" maxX="8" maxY="8"/>
                                 <state key="normal" image="gallery"/>
                                 <connections>
-                                    <segue destination="6qp-GD-7o5" kind="show" identifier="ShowLibrary" id="nmW-eX-iYk"/>
+                                    <action selector="libraryClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="yft-LL-fx1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjw-Pa-ZGO" userLabel="AR">
@@ -225,14 +225,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SH-Fa-mBr">
-                                <rect key="frame" x="76.5" y="32" width="514.5" height="343"/>
+                                <rect key="frame" x="52.5" y="0.0" width="562.5" height="375"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2SH-Fa-mBr" secondAttribute="height" multiplier="3:2" id="wsE-a2-zp2"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1f0-Iq-6DU">
-                                <rect key="frame" x="76.5" y="32" width="514.5" height="343"/>
+                                <rect key="frame" x="52.5" y="0.0" width="562.5" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1f0-Iq-6DU" secondAttribute="height" multiplier="3:2" id="vaH-bg-Xl9"/>
                                 </constraints>

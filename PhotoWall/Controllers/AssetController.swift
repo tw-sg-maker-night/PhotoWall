@@ -17,24 +17,22 @@ protocol AssetControllerDelegate: class {
 
 class AssetController: UIViewController {
 
+    var assetStore: AssetStore!
+    weak var delegate: AssetControllerDelegate?
+    
     @IBOutlet var videoView: UIView!
     @IBOutlet var imageView: UIImageView!
-    
     @IBOutlet var uploadButton: UIButton!
-    
-//    var assetStore: WallAssetStore
-//    var remoteAssetStore: RemoteStore
     
     var wallAsset: WallAsset?
     var videoPlayer: AVPlayer?
     var videoLayer: AVPlayerLayer?
     
-    weak var delegate: AssetControllerDelegate?
-    
-    class func new(delegate: AssetControllerDelegate) -> AssetController {
+    class func new(assetStore: AssetStore, delegate: AssetControllerDelegate) -> AssetController {
 //        let controller = AssetController()
         // TODO: Get rid of the storyboard
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Asset") as! AssetController
+        controller.assetStore = assetStore
         controller.delegate = delegate
         return controller
     }
@@ -49,7 +47,7 @@ class AssetController: UIViewController {
                 self.imageView?.isHidden = false
             }
             
-            RemoteStore().assetExists(asset: asset).continueWith { task -> Void in
+            assetStore.assetExists(asset: asset).continueWith { task -> Void in
                 if let _ = task.error {
                     DispatchQueue.main.async {
                         self.uploadButton.isHidden = false
@@ -74,8 +72,8 @@ class AssetController: UIViewController {
     func deleteClicked() {
         print("deleteClicked")
         if let asset = wallAsset {
-            RemoteStore().deleteAsset(asset: asset).continueOnSuccessWith { task -> Void in
-                WallAssetStore().delete(asset: asset)
+            assetStore.deleteAsset(asset: asset).continueOnSuccessWith { task -> Void in
+                self.assetStore.delete(asset: asset)
             }
             delegate?.didRemoveAsset(asset)
         }
@@ -85,7 +83,7 @@ class AssetController: UIViewController {
     func uploadClicked() {
         print("uploadClicked")
         if let asset = wallAsset {
-            RemoteStore().uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
+            assetStore.uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
                 print("Upload Complete!")
                 DispatchQueue.main.async {
                     let controller = UIAlertController(title: "Upload Complete!", message: nil, preferredStyle: .alert)

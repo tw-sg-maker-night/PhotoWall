@@ -17,6 +17,8 @@ class Coordinator: NSObject {
     
     var googleAuthService: GoogleAuthService!
     var locationService: LocationService!
+        
+    var assetStore: AssetStore?
     
     init(navController: UINavigationController) {
         self.navController = navController
@@ -47,27 +49,27 @@ class Coordinator: NSObject {
     }
     
     func displayLoadingLocation(location: Location) {
-        let controller = LoadingController.new(location: location, delegate: self)
+        let controller = LoadingController.new(assetStore: AssetStore(groupId: location.office), delegate: self)
         self.navController.setViewControllers([controller], animated: true)
     }
     
-    func displayPhotoWall(location: Location) {
-        let controller = PhotoWallController.new(location: location, delegate: self)
+    func displayPhotoWall() {
+        let controller = PhotoWallController.new(assetStore: assetStore!, delegate: self)
         self.navController.setViewControllers([controller], animated: true)
     }
     
     func displayCamera() {
-        let controller = CameraController.new(delegate: self)
+        let controller = CameraController.new(assetStore: assetStore!, delegate: self)
         self.navController.present(controller, animated: true)
     }
     
     func displayLibrary() {
-        let controller = LibraryController.new(delegate: self)
+        let controller = LibraryController.new(assetStore: assetStore!, delegate: self)
         self.navController.pushViewController(controller, animated: true)
     }
     
     func displayAssetDetails() {
-        let controller = AssetController.new(delegate: self)
+        let controller = AssetController.new(assetStore: assetStore!, delegate: self)
         self.navController.pushViewController(controller, animated: true)
     }
     
@@ -168,8 +170,9 @@ extension Coordinator: LocationListDelegate {
 
 extension Coordinator: LoadingDelegate {
     
-    func didFinishLoadingLocation(_ location: Location) {
-        displayPhotoWall(location: location)
+    func didFinishLoading(assetStore: AssetStore) {
+        self.assetStore = assetStore
+        displayPhotoWall()
     }
 }
 

@@ -18,6 +18,8 @@ protocol LibraryControllerDelegate: class {
 
 class LibraryController: UICollectionViewController {
     
+    var assetStore: AssetStore!
+    
     var assets: [WallAsset] = []
     var selectedAssets: [WallAsset] = []
     
@@ -25,10 +27,11 @@ class LibraryController: UICollectionViewController {
     let itemsPerRow: CGFloat = 4
     weak var delegate: LibraryControllerDelegate?
     
-    class func new(delegate: LibraryControllerDelegate) -> LibraryController {
+    class func new(assetStore: AssetStore, delegate: LibraryControllerDelegate) -> LibraryController {
 //        let controller = LibraryController()
         // TODO: Get rid of the storyboard
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Library") as! LibraryController
+        controller.assetStore = assetStore
         controller.delegate = delegate
         return controller
     }
@@ -53,7 +56,7 @@ class LibraryController: UICollectionViewController {
         super.viewDidAppear(animated)
         // TODO: Move the loading of assets into a background thread and display a loading indicator
         if assets.count == 0 {
-            assets = WallAssetStore().loadAssets()
+            assets = assetStore.loadAssets()
             collectionView?.reloadData()
         } else if selectedAssets.count > 0 {
             if let indexPath = indexPathFor(asset: selectedAssets.first) {
@@ -77,7 +80,7 @@ class LibraryController: UICollectionViewController {
     @objc
     func trashClicked() {
         for asset in selectedAssets {
-            WallAssetStore().delete(asset: asset)
+            assetStore.delete(asset: asset)
             assets.removeAll(where: { $0 == asset })
         }
         collectionView.reloadData()
@@ -86,7 +89,7 @@ class LibraryController: UICollectionViewController {
     @objc
     func uploadClicked() {
         for asset in selectedAssets {
-            RemoteStore().uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
+            assetStore.uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
                 if let error = task.error {
                     print("Upload Failed! - \(error.localizedDescription)")
                 } else {
@@ -175,6 +178,7 @@ extension LibraryController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension LibraryController {
+    
     func assetFor(indexPath: IndexPath) -> WallAsset {
         return assets[indexPath.row]
     }

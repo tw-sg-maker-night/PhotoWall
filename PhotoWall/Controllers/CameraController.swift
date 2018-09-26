@@ -21,14 +21,18 @@ class CameraController: UIViewController {
     var session: AVCaptureSession!
     var videoOutput: AVCaptureMovieFileOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    
     var assetIdentifier: String!
+    var assetStore: AssetStore!
     weak var delegate: CameraControllerDelegate?
     
-    class func new(delegate: CameraControllerDelegate) -> CameraController {
+    class func new(assetStore: AssetStore, delegate: CameraControllerDelegate) -> CameraController {
 //        let controller = CameraController()
         // TODO: Get rid of the storyboard
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Camera") as! CameraController
+        controller.assetStore = assetStore
         controller.delegate = delegate
+        controller.assetIdentifier = UUID().uuidString
         return controller
     }
     
@@ -115,7 +119,6 @@ extension CameraController: AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo fileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         if error == nil {
-            let assetStore = WallAssetStore()
             assetStore.createAssetDir(name: assetIdentifier)
             let image = imageFromVideo(url: fileURL)
             assetStore.storeImage(image, for: assetIdentifier)

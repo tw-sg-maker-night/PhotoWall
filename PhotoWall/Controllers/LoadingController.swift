@@ -11,35 +11,34 @@ import UIKit
 import AWSCore
 
 protocol LoadingDelegate: class {
-    func didFinishLoadingLocation(_ location: Location)
+    func didFinishLoading(assetStore: AssetStore)
 }
 
 class LoadingController: UIViewController {
     
-    var location: Location?
+    var assetStore: AssetStore!
     weak var delegate: LoadingDelegate?
+    
     @IBOutlet var loadingLabel: UILabel!
     
-    class func new(location: Location, delegate: LoadingDelegate) -> LoadingController {
+    class func new(assetStore: AssetStore, delegate: LoadingDelegate) -> LoadingController {
         let controller = LoadingController(nibName: "Loading", bundle: nil)
         controller.delegate = delegate
-        controller.location = location
+        controller.assetStore = assetStore
         return controller
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingLabel.text = "Loading \(location!.office) photos..."
+        loadingLabel.text = "Loading \(assetStore.groupId) photos..."
         loadingLabel.setNeedsLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let location = location {
-            RemoteStore(groupId: location.office).downloadAssets()?.continueOnSuccessWith(executor: AWSExecutor.mainThread()) { task in
-                self.delegate?.didFinishLoadingLocation(location)
-            }
+        assetStore.downloadAssets()?.continueOnSuccessWith(executor: AWSExecutor.mainThread()) { task in
+            self.delegate?.didFinishLoading(assetStore: self.assetStore)
         }
     }
     

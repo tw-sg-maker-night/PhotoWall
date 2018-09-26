@@ -9,21 +9,34 @@
 import Foundation
 import AWSS3
 
-class RemoteStore {
+protocol RemoteAssetStore {
+    var groupId: String { get }
+    //TODO: Need to review all these public methdos consolidate
+    func downloadAssets() -> AWSTask<AnyObject>?
+    func getAssetNames() -> AWSTask<AnyObject>?
+    func downloadManifest(for name: String) -> AWSTask<AnyObject>
+    func downloadAsset(fileName: String, for name: String) -> AWSTask<AnyObject>
+    func getAssetFileNames(for name: String) -> AWSTask<AnyObject>?
+    func uploadAsset(asset: WallAsset) -> AWSTask<AnyObject>
+    func deleteAsset(asset: WallAsset) -> AWSTask<AWSS3DeleteObjectsOutput>
+    func assetExists(asset: WallAsset) -> AWSTask<AWSS3HeadObjectOutput>
+}
+
+class S3AssetStore: RemoteAssetStore {
 
     let transferManager: AWSS3TransferManager
     let s3: AWSS3
-    let assetStore: WallAssetStore
+    let localAssetStore: LocalAssetStore
     let groupId: String
     let bucket: String
 
-    init(groupId: String = "Singapore", assetStore: WallAssetStore = WallAssetStore(), appConfig: AppConfig = AppConfigLoader().load()) {
+    init(groupId: String = "Singapore", localAssetStore: LocalAssetStore = WallAssetStore(), appConfig: AppConfig = AppConfigLoader().load()) {
         let credentials = AWSStaticCredentialsProvider(accessKey: appConfig.awsAccessKey, secretKey: appConfig.awsSecretKey)
         let serviceConfiguration = AWSServiceConfiguration(region: .APSoutheast1, credentialsProvider: credentials)
         AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
         self.s3 = AWSS3.default()
         self.transferManager = AWSS3TransferManager.default()
-        self.assetStore = assetStore
+        self.localAssetStore = localAssetStore
         self.groupId = groupId
         self.bucket = appConfig.bucketName
     }
@@ -36,10 +49,10 @@ class RemoteStore {
             }
 
             let tasks: [AWSTask<AnyObject>] = assetNames.map { assetName in
-                self.assetStore.createAssetDir(name: assetName)
+                self.localAssetStore.createAssetDir(name: assetName)
                 return self.downloadManifest(for: assetName).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
                     print("Downloaded manifest file")
-                    if let assetManifest = self.assetStore.loadManifest(for: assetName) {
+                    if let assetManifest = self.localAssetStore.loadManifest(for: assetName) {
                         let imageTask = self.downloadAsset(fileName: assetManifest.imageFileName, for: assetName)
                         let videoTask = self.downloadAsset(fileName: assetManifest.videoFileName, for: assetName)
                         return AWSTask(forCompletionOfAllTasks: [imageTask, videoTask])
@@ -83,18 +96,18 @@ class RemoteStore {
         let request = AWSS3TransferManagerDownloadRequest()!
         request.bucket = bucket
         request.key = "\(groupId)/\(name)/manifest.json"
-        request.downloadingFileURL = assetStore.manifestUrl(for: name)
+        request.downloadingFileURL = localAssetStore.manifestUrl(for: name)
         return self.transferManager.download(request)
     }
 
     func downloadAsset(fileName: String, for name: String) -> AWSTask<AnyObject> {
-        guard !assetStore.fileExists(fileName, for: name) else {
+        guard !localAssetStore.fileExists(fileName, for: name) else {
             return AWSTask(result: nil)
         }
         let request = AWSS3TransferManagerDownloadRequest()!
         request.bucket = bucket
         request.key = "\(groupId)/\(name)/\(fileName)"
-        request.downloadingFileURL = assetStore.fileUrl(fileName: fileName, for: name)
+        request.downloadingFileURL = localAssetStore.fileUrl(fileName: fileName, for: name)
         return self.transferManager.download(request)
     }
     
@@ -156,7 +169,7 @@ class RemoteStore {
                     let uploadRequest = AWSS3TransferManagerUploadRequest()!
                     uploadRequest.bucket = self.bucket
                     uploadRequest.key = "\(self.groupId)/\(asset.identifier)/manifest.json"
-                    uploadRequest.body = self.assetStore.manifestUrl(for: asset.identifier)
+                    uploadRequest.body = self.localAssetStore.manifestUrl(for: asset.identifier)
                     tasks.append(self.transferManager.upload(uploadRequest))
                 }
             }

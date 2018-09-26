@@ -23,21 +23,27 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     var wallAssets: [WallAsset] = []
     var players: [String: AVPlayer] = [:]
-    var location: Location?
+    
+    var assetStore: AssetStore!
     weak var delegate: PhotoWallDelegate?
     
-    class func new(location: Location, delegate: PhotoWallDelegate) -> PhotoWallController {
+    class func new(assetStore: AssetStore, delegate: PhotoWallDelegate) -> PhotoWallController {
 //        let controller = PhotoWallController()
         // TODO: Get rid of the storyboard
         let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PhotoWall") as! PhotoWallController
+        controller.assetStore = assetStore
         controller.delegate = delegate
-        controller.location = location
         return controller
+    }
+    
+    @IBAction func libraryClicked() {
+        sceneView.session.pause()
+        delegate?.displayLibrary()
     }
     
     @IBAction func addClicked() {
         sceneView.session.pause()
-        performSegue(withIdentifier: "ShowCamera", sender: self)
+        delegate?.displayCamera()
     }
     
     @IBAction func locationClicked() {
@@ -62,7 +68,7 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     }
     
     func loadWallAssets() {
-        self.wallAssets = WallAssetStore().loadAssets()
+        self.wallAssets = assetStore.loadAssets()
         for wallAsset in wallAssets {
             print("WallAsset: \(wallAsset)")
         }
@@ -75,9 +81,9 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        if let location = location {
-            locationButton.setTitle(location.office, for: .normal)
-        }
+        
+        locationButton.setTitle(assetStore.groupId, for: .normal)
+        
         loadWallAssets()
         for asset in wallAssets {
             self.players[asset.identifier] = loadPlayer(for: asset)

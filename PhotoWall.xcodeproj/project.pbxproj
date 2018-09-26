@@ -15,7 +15,7 @@
 		EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEE9211BC1D10069F83A /* WallAsset.swift */; };
 		EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF6211C3B160069F83A /* PhotoWallController.swift */; };
 		EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEF7211C3B160069F83A /* CameraController.swift */; };
-		EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */; };
+		EF24FF00211C43CD0069F83A /* LocalAssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FEFF211C43CD0069F83A /* LocalAssetStore.swift */; };
 		EF24FF02211D67160069F83A /* WallAssetManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF24FF01211D67160069F83A /* WallAssetManifest.swift */; };
 		EF3F6A2D2125B81300498C00 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF3F6A2C2125B81300498C00 /* Secrets.plist */; };
 		EF3F6A2F2125BFA700498C00 /* AppConfigLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */; };
@@ -23,7 +23,7 @@
 		EF3F6A332125C16D00498C00 /* LibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A322125C16D00498C00 /* LibraryController.swift */; };
 		EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3F6A352125CCA200498C00 /* AssetCell.swift */; };
 		EF8AF5C3211E663000430D8F /* CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */; };
-		EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */; };
+		EF8AF5C5211F14DF00430D8F /* RemoteAssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8AF5C4211F14DF00430D8F /* RemoteAssetStore.swift */; };
 		EFA88E57215A684600BDA5A9 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E55215A684600BDA5A9 /* LocationService.swift */; };
 		EFA88E58215A684600BDA5A9 /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E56215A684600BDA5A9 /* LocationClient.swift */; };
 		EFA88E5B215A688200BDA5A9 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E59215A688200BDA5A9 /* Location.swift */; };
@@ -41,6 +41,7 @@
 		EFA88E77215A888C00BDA5A9 /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA88E76215A888C00BDA5A9 /* Login.xib */; };
 		EFA88E79215A8CD900BDA5A9 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E78215A8CD900BDA5A9 /* UINavigationController.swift */; };
 		EFA88E7B215A9D8100BDA5A9 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA88E7A215A9D8100BDA5A9 /* Loading.xib */; };
+		EFA88E7D215B0ADE00BDA5A9 /* AssetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA88E7C215B0ADE00BDA5A9 /* AssetStore.swift */; };
 		EFA900DA20E3AFF30033B63B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900D920E3AFF30033B63B /* AppDelegate.swift */; };
 		EFA900E120E3AFF30033B63B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA900DF20E3AFF30033B63B /* Main.storyboard */; };
 		EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E220E3AFF90033B63B /* Assets.xcassets */; };
@@ -73,7 +74,7 @@
 		EF24FEE9211BC1D10069F83A /* WallAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAsset.swift; sourceTree = "<group>"; };
 		EF24FEF6211C3B160069F83A /* PhotoWallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoWallController.swift; path = PhotoWall/Controllers/PhotoWallController.swift; sourceTree = SOURCE_ROOT; };
 		EF24FEF7211C3B160069F83A /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraController.swift; path = PhotoWall/Controllers/CameraController.swift; sourceTree = SOURCE_ROOT; };
-		EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetStore.swift; sourceTree = "<group>"; };
+		EF24FEFF211C43CD0069F83A /* LocalAssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAssetStore.swift; sourceTree = "<group>"; };
 		EF24FF01211D67160069F83A /* WallAssetManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallAssetManifest.swift; sourceTree = "<group>"; };
 		EF3F6A2C2125B81300498C00 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigLoader.swift; sourceTree = "<group>"; };
@@ -81,7 +82,7 @@
 		EF3F6A322125C16D00498C00 /* LibraryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryController.swift; sourceTree = "<group>"; };
 		EF3F6A352125CCA200498C00 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		EF8AF5C2211E663000430D8F /* CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStringConvertable.swift; sourceTree = "<group>"; };
-		EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStore.swift; sourceTree = "<group>"; };
+		EF8AF5C4211F14DF00430D8F /* RemoteAssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAssetStore.swift; sourceTree = "<group>"; };
 		EFA88E55215A684600BDA5A9 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EFA88E56215A684600BDA5A9 /* LocationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		EFA88E59215A688200BDA5A9 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		EFA88E76215A888C00BDA5A9 /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
 		EFA88E78215A8CD900BDA5A9 /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		EFA88E7A215A9D8100BDA5A9 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
+		EFA88E7C215B0ADE00BDA5A9 /* AssetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetStore.swift; sourceTree = "<group>"; };
 		EFA900D620E3AFF30033B63B /* PhotoWall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900D920E3AFF30033B63B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA900E020E3AFF30033B63B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,8 +175,9 @@
 		EF24FEFE211C43B40069F83A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				EF24FEFF211C43CD0069F83A /* WallAssetStore.swift */,
-				EF8AF5C4211F14DF00430D8F /* RemoteStore.swift */,
+				EFA88E7C215B0ADE00BDA5A9 /* AssetStore.swift */,
+				EF24FEFF211C43CD0069F83A /* LocalAssetStore.swift */,
+				EF8AF5C4211F14DF00430D8F /* RemoteAssetStore.swift */,
 				EF3F6A2E2125BFA700498C00 /* AppConfigLoader.swift */,
 				EFA88E55215A684600BDA5A9 /* LocationService.swift */,
 				EFA88E56215A684600BDA5A9 /* LocationClient.swift */,
@@ -502,7 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF12C5462136E98E0056406F /* ARButton.swift in Sources */,
-				EF24FF00211C43CD0069F83A /* WallAssetStore.swift in Sources */,
+				EF24FF00211C43CD0069F83A /* LocalAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
 				EF12C54A2136F4050056406F /* AssetController.swift in Sources */,
 				EFA88E5B215A688200BDA5A9 /* Location.swift in Sources */,
@@ -513,6 +516,7 @@
 				EFA88E6E215A834A00BDA5A9 /* Coordinator.swift in Sources */,
 				EFA88E5C215A688200BDA5A9 /* Country.swift in Sources */,
 				EFA88E5E215A69D900BDA5A9 /* BaseService.swift in Sources */,
+				EFA88E7D215B0ADE00BDA5A9 /* AssetStore.swift in Sources */,
 				EF0E5256212467C800B5BEB0 /* LoadingController.swift in Sources */,
 				EFA88E79215A8CD900BDA5A9 /* UINavigationController.swift in Sources */,
 				EFA88E6A215A6D1000BDA5A9 /* AuthProvider.swift in Sources */,
@@ -520,7 +524,7 @@
 				EF24FEF8211C3B160069F83A /* PhotoWallController.swift in Sources */,
 				EFA88E60215A6A4A00BDA5A9 /* Constants.swift in Sources */,
 				EF24FEF9211C3B160069F83A /* CameraController.swift in Sources */,
-				EF8AF5C5211F14DF00430D8F /* RemoteStore.swift in Sources */,
+				EF8AF5C5211F14DF00430D8F /* RemoteAssetStore.swift in Sources */,
 				EFA88E57215A684600BDA5A9 /* LocationService.swift in Sources */,
 				EF3F6A332125C16D00498C00 /* LibraryController.swift in Sources */,
 				EFA88E70215A83BD00BDA5A9 /* LoginController.swift in Sources */,
