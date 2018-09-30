@@ -20,6 +20,7 @@ protocol RemoteAssetStore {
     func uploadAsset(asset: WallAsset) -> AWSTask<AnyObject>
     func deleteAsset(asset: WallAsset) -> AWSTask<AWSS3DeleteObjectsOutput>
     func assetExists(asset: WallAsset) -> AWSTask<AWSS3HeadObjectOutput>
+    func createGroupFolder() -> AWSTask<AWSS3PutObjectOutput>?
 }
 
 class S3AssetStore: RemoteAssetStore {
@@ -67,6 +68,15 @@ class S3AssetStore: RemoteAssetStore {
         }
     }
 
+    func createGroupFolder() -> AWSTask<AWSS3PutObjectOutput>? {
+        if let request = AWSS3PutObjectRequest() {
+            request.bucket = bucket
+            request.key = groupId+"/"
+            return s3.putObject(request)
+        }
+        return nil
+    }
+    
     func getAssetNames() -> AWSTask<AnyObject>? {
         if let request = AWSS3ListObjectsV2Request() {
             request.bucket = bucket
@@ -142,42 +152,38 @@ class S3AssetStore: RemoteAssetStore {
         return nil
     }
     
-    // TODO: refactor!
     func uploadAsset(asset: WallAsset) -> AWSTask<AnyObject> {
         return getAssetFileNames(for: asset.identifier)!.continueOnSuccessWith { task in
-            print("getAssetFileNames done...")            
             if let fileNames = task.result as? [String] {
-                print("fileName = \(fileNames)")
                 var tasks = [AWSTask<AnyObject>]()
-                if !fileNames.contains(asset.imageFileName) {
-                    let uploadRequest = AWSS3TransferManagerUploadRequest()!
-                    uploadRequest.bucket = self.bucket
-                    uploadRequest.key = "\(self.groupId)/\(asset.identifier)/\(asset.imageFileName)"
-                    uploadRequest.body = asset.imageUrl
-                    tasks.append(self.transferManager.upload(uploadRequest))
+                let urls = [asset.imageUrl, asset.videoUrl, self.localAssetStore.manifestUrl(for: asset.identifier)]
+                for url in urls {
+                    if !fileNames.contains(url.lastPathComponent) {
+                        if let task = self.uploadFile(for: asset.identifier, withUrl: url) {
+                            tasks.append(task)
+                        }
+                    }
                 }
-                
-                if !fileNames.contains(asset.videoFileName) {
-                    let uploadRequest = AWSS3TransferManagerUploadRequest()!
-                    uploadRequest.bucket = self.bucket
-                    uploadRequest.key = "\(self.groupId)/\(asset.identifier)/\(asset.videoFileName)"
-                    uploadRequest.body = asset.videoUrl
-                    tasks.append(self.transferManager.upload(uploadRequest))
-                }
-                
-                if !fileNames.contains("manifest.json") {
-                    let uploadRequest = AWSS3TransferManagerUploadRequest()!
-                    uploadRequest.bucket = self.bucket
-                    uploadRequest.key = "\(self.groupId)/\(asset.identifier)/manifest.json"
-                    uploadRequest.body = self.localAssetStore.manifestUrl(for: asset.identifier)
-                    tasks.append(self.transferManager.upload(uploadRequest))
-                }
+                return AWSTask(forCompletionOfAllTasks: tasks) as AWSTask<AnyObject>
             }
             return AWSTask(error: RemoteStoreError.genericError) as AWSTask<AnyObject>
         }
     }
     
-    // TODO: refactor!
+    private func uploadFile(for identifier: String, withUrl url: URL) -> AWSTask<AnyObject>? {
+        return uploadFile(for: identifier, withUrl: url, fileName: url.lastPathComponent)
+    }
+        
+    private func uploadFile(for identifier: String, withUrl url: URL, fileName: String) -> AWSTask<AnyObject>? {
+        if let uploadRequest = AWSS3TransferManagerUploadRequest() {
+            uploadRequest.bucket = self.bucket
+            uploadRequest.key = "\(self.groupId)/\(identifier)/\(fileName)"
+            uploadRequest.body = url
+            return transferManager.upload(uploadRequest)
+        }
+        return nil
+    }
+    
     func deleteAsset(asset: WallAsset) -> AWSTask<AWSS3DeleteObjectsOutput> {
         let request = AWSS3DeleteObjectsRequest()!
         request.bucket = self.bucket

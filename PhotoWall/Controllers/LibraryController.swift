@@ -13,7 +13,7 @@ import AVFoundation
 import AWSCore
 
 protocol LibraryControllerDelegate: class {
-    
+    func didSelectAsset(_ asset: WallAsset)
 }
 
 class LibraryController: UICollectionViewController {
@@ -22,6 +22,7 @@ class LibraryController: UICollectionViewController {
     
     var assets: [WallAsset] = []
     var selectedAssets: [WallAsset] = []
+    var assetToRemove: WallAsset?
     
     let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
     let itemsPerRow: CGFloat = 4
@@ -39,8 +40,6 @@ class LibraryController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Library"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashClicked))
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(uploadClicked))
         
         collectionView?.allowsMultipleSelection = true
         collectionView?.allowsSelection = true
@@ -58,23 +57,20 @@ class LibraryController: UICollectionViewController {
         if assets.count == 0 {
             assets = assetStore.loadAssets()
             collectionView?.reloadData()
-        } else if selectedAssets.count > 0 {
-            if let indexPath = indexPathFor(asset: selectedAssets.first) {
-                selectedAssets.removeAll()
-                collectionView.performBatchUpdates({
-                    assets.remove(at: indexPath.row)
-                    self.collectionView.deleteItems(at: [indexPath])
-                })
-            }
+        }
+        
+        if let asset = assetToRemove {
+            removeAsset(asset)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? AssetController {
-            controller.delegate = self
-            controller.wallAsset = selectedAssets.first
-            selectedAssets.removeAll()
-        }
+    func removeAsset(_ asset: WallAsset) {
+        collectionView.performBatchUpdates({
+            if let indexPath = self.indexPathFor(asset: asset) {
+                assets.remove(at: indexPath.row)
+                self.collectionView.deleteItems(at: [indexPath])
+            }
+        })
     }
     
     @objc
@@ -99,15 +95,6 @@ class LibraryController: UICollectionViewController {
             }
         }
         collectionView.reloadData()
-    }
-}
-
-extension LibraryController: AssetControllerDelegate {
-    
-    func didRemoveAsset(_ asset: WallAsset) {
-        print("didRemoveAsset")
-        selectedAssets = [asset]
-        self.navigationController?.popToViewController(self, animated: true)
     }
 }
 
@@ -147,7 +134,10 @@ extension LibraryController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt \(indexPath)")
-        self.performSegue(withIdentifier: "ViewAsset", sender: self)
+        if let asset = selectedAssets.first {
+            selectedAssets.removeAll()
+            delegate?.didSelectAsset(asset)
+        }
     }
 }
 

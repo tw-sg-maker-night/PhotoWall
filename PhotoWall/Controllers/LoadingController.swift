@@ -36,9 +36,10 @@ class LoadingController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        assetStore.downloadAssets()?.continueOnSuccessWith(executor: AWSExecutor.mainThread()) { task in
-            self.delegate?.didFinishLoading(assetStore: self.assetStore)
+        assetStore.createGroupFolder()?.continueWith { task in
+            self.assetStore.downloadAssets()?.continueOnSuccessWith(executor: AWSExecutor.mainThread()) { task in
+                self.delegate?.didFinishLoading(assetStore: self.assetStore)
+            }
         }
     }
     

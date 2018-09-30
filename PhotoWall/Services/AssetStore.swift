@@ -24,6 +24,7 @@ class AssetStore {
 }
 
 extension AssetStore: LocalAssetStore {
+    
     func loadAssets() -> [WallAsset] {
         return localAssetStore.loadAssets()
     }
@@ -70,6 +71,11 @@ extension AssetStore: LocalAssetStore {
 }
     
 extension AssetStore: RemoteAssetStore {
+    
+    func createGroupFolder() -> AWSTask<AWSS3PutObjectOutput>? {
+        return remoteAssetStore.createGroupFolder()
+    }
+    
     func downloadAssets() -> AWSTask<AnyObject>? {
         return remoteAssetStore.downloadAssets()
     }

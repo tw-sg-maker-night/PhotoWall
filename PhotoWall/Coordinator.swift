@@ -68,8 +68,11 @@ class Coordinator: NSObject {
         self.navController.pushViewController(controller, animated: true)
     }
     
-    func displayAssetDetails() {
+    func displayAssetDetails(asset: WallAsset) {
         let controller = AssetController.new(assetStore: assetStore!, delegate: self)
+        controller.assetStore = assetStore
+        controller.wallAsset = asset
+        controller.delegate = self
         self.navController.pushViewController(controller, animated: true)
     }
     
@@ -186,10 +189,17 @@ extension Coordinator: CameraControllerDelegate {
 
 extension Coordinator: LibraryControllerDelegate {
     
+    func didSelectAsset(_ asset: WallAsset) {
+        displayAssetDetails(asset: asset)
+    }
 }
 
 extension Coordinator: AssetControllerDelegate {
+    
     func didRemoveAsset(_ asset: WallAsset) {
-        // TODO: do something...
+        if let controller = libraryController() {
+            controller.assetToRemove = asset
+            navController.popToViewController(controller, animated: true)            
+        }
     }
 }

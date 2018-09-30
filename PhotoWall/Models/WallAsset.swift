@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import ARKit
 
+// TODO: This object should probably know the groupId of the asset and
+// be able to list the 3 local file URLs and S3 keys related to the asset.
 struct WallAsset: CustomStringConvertible, Equatable {
     var identifier: String
     var imageUrl: URL

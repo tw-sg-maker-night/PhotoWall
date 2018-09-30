@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 
 class ARButton: UIButton {
+    
+    @IBInspectable var cornerRadius: CGFloat = -1 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -21,8 +28,9 @@ class ARButton: UIButton {
     }
     
     private func setup() {
-//        self.layer.cornerRadius = self.frame.size.width / 2
-        self.layer.cornerRadius = 33
+        if cornerRadius == -1 {
+            self.layer.cornerRadius = self.frame.size.width / 2
+        }
         self.layer.backgroundColor = UIColor(white: 1, alpha: 0.5).cgColor
     }
 }

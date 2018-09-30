@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AVFoundation
 import AWSCore
+import PKHUD
 
 protocol AssetControllerDelegate: class {
     func didRemoveAsset(_ asset: WallAsset)
@@ -47,17 +48,7 @@ class AssetController: UIViewController {
                 self.imageView?.isHidden = false
             }
             
-            assetStore.assetExists(asset: asset).continueWith { task -> Void in
-                if let _ = task.error {
-                    DispatchQueue.main.async {
-                        self.uploadButton.isHidden = false
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.uploadButton.isHidden = true
-                    }
-                }
-            }
+            updateUploadButtonState()
         }
     }
     
@@ -72,10 +63,17 @@ class AssetController: UIViewController {
     func deleteClicked() {
         print("deleteClicked")
         if let asset = wallAsset {
-            assetStore.deleteAsset(asset: asset).continueOnSuccessWith { task -> Void in
-                self.assetStore.delete(asset: asset)
+            HUD.show(.progress)
+            assetStore.deleteAsset(asset: asset).continueWith(executor: AWSExecutor.mainThread()) { task -> Void in
+                if let error = task.error {
+                    HUD.flash(.error)
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    HUD.flash(.success)
+                    self.assetStore.delete(asset: asset)
+                    self.delegate?.didRemoveAsset(asset)
+                }
             }
-            delegate?.didRemoveAsset(asset)
         }
     }
     
@@ -83,13 +81,15 @@ class AssetController: UIViewController {
     func uploadClicked() {
         print("uploadClicked")
         if let asset = wallAsset {
-            assetStore.uploadAsset(asset: asset).continueOnSuccessWith { task -> AWSTask<AnyObject>? in
-                print("Upload Complete!")
-                DispatchQueue.main.async {
-                    let controller = UIAlertController(title: "Upload Complete!", message: nil, preferredStyle: .alert)
-                    controller.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            HUD.show(.progress)
+            assetStore.uploadAsset(asset: asset).continueWith(executor: AWSExecutor.mainThread()) { task -> Void in
+                if let error = task.error {
+                    HUD.flash(.error)
+                    print("Error: \(error.localizedDescription)")
+                } else {
+                    HUD.flash(.success)
+                    self.updateUploadButtonState()
                 }
-                return nil
             }
         }
     }
@@ -126,5 +126,14 @@ class AssetController: UIViewController {
         self.videoPlayer?.seek(to: .zero)
         videoPlayer?.play()
         imageView?.isHidden = true
+    }
+    
+    private func updateUploadButtonState() {
+        guard let asset = wallAsset else {
+            return
+        }
+        assetStore.assetExists(asset: asset).continueWith(executor: AWSExecutor.mainThread()) { task -> Void in
+            self.uploadButton.isHidden = task.error == nil
+        }
     }
 }

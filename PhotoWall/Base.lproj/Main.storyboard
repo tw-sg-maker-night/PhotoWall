@@ -98,6 +98,11 @@
                                 <state key="normal" title="Singapore" image="location">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="33"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="locationClicked" destination="BV1-FR-VrT" eventType="touchUpInside" id="kiG-mc-oeW"/>
                                 </connections>
@@ -124,7 +129,6 @@
                     <connections>
                         <outlet property="locationButton" destination="bZK-cl-buh" id="wK7-j3-F3r"/>
                         <outlet property="sceneView" destination="38w-K7-923" id="ofv-Fd-Zc9"/>
-                        <segue destination="xfE-Fg-jhL" kind="presentation" identifier="ShowCamera" id="wgU-Wv-iK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -282,7 +286,6 @@
                                         <state key="normal" image="play"/>
                                         <connections>
                                             <action selector="playClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="9f8-dE-4rS"/>
-                                            <action selector="uploadClicked" destination="YfZ-2q-QVf" eventType="touchUpInside" id="6Ch-Mv-H99"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -365,9 +368,6 @@
                         </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="qs2-lN-KZ6"/>
-                    <connections>
-                        <segue destination="YfZ-2q-QVf" kind="show" identifier="ViewAsset" id="J9P-QS-FFN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgV-RO-lkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
