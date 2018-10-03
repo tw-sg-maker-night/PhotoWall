@@ -20,6 +20,7 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var locationButton: UIButton!
+    @IBOutlet var locationButtonWidth: NSLayoutConstraint!
     
     var wallAssets: [WallAsset] = []
     var players: [String: AVPlayer] = [:]
@@ -83,6 +84,11 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         locationButton.setTitle(assetStore.groupId, for: .normal)
+        locationButton.imageView?.contentMode = .scaleAspectFit
+        if let title = locationButton.title(for: .normal) {
+            let titleSize = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)])
+            locationButtonWidth.constant = titleSize.width + 80
+        }
         
         loadWallAssets()
         for asset in wallAssets {

@@ -13,7 +13,7 @@
 - Add the AWSSecretKey and AWSAccessKey values to `Secrets.plist`
 
 # Add a new device
-- Download the latest certs/profiles: `fastlane match development`
+- Download the latest certs/profiles: `bundle exec fastlane match development`
 - Add the new device name and identifier here: `./fastlane/Fastlane`
   - Replace `<device name>` with the name of your device
   - Replace `<device identifier>` with the identifier of your device
