@@ -705,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.ARPhotoWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.enterprise.ARPhotoWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.thoughtworks.ARPhotoWall";
 				SWIFT_VERSION = 4.2;
@@ -719,16 +719,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YFWXADMX4E;
 				INFOPLIST_FILE = PhotoWall/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.ARPhotoWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thoughtworks.enterprise.ARPhotoWall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "match InHouse com.thoughtworks.enterprise.ARPhotoWall";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

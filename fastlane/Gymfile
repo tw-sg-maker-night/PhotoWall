@@ -1,0 +1,7 @@
+scheme "PhotoWall"
+sdk "iphoneos12.0"
+clean true
+output_directory "./build"
+output_name "PhotoWall"
+
+export_method "enterprise"

@@ -20,6 +20,12 @@ platform :ios do
     cocoapods
   end
 
+  desc "Build the app"
+  lane :beta do
+    build_app
+    hockey(api_token: "<hockey app api token>")
+  end
+
   desc "Runs all the tests"
   lane :test do
     scan

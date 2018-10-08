@@ -5,3 +5,4 @@ report.xml
 fastlane/test_output
 PhotoWall.xcodeproj/xcuserdata
 PhotoWall.xcworkspace/xcuserdata
+build

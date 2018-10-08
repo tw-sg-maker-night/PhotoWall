@@ -1,7 +1,14 @@
-app_identifier "com.thoughtworks.ARPhotoWall" # The bundle identifier of your app
 apple_id "charris@thoughtworks.com" # Your Apple email address
-team_id "LL62P32G5C"
-itc_team_name "ThoughtWorks"
+
+# TW AppStore Team
+# team_id "LL62P32G5C"
+# itc_team_name "ThoughtWorks"
+# app_identifier "com.thoughtworks.ARPhotoWall" # a.k.a bundle identifier
+
+# TW Enterprise Team
+team_id "YFWXADMX4E"
+itc_team_name "ThoughtWorks Inc"
+app_identifier "com.thoughtworks.enterprise.ARPhotoWall" # a.k.a bundle identifier
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
