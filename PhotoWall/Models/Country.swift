@@ -10,4 +10,9 @@ import Foundation
 public struct Country: Codable {
     public let country: String
     public let offices: [Location]
+    
+    public init(country: String, offices: [Location]) {
+        self.country = country
+        self.offices = offices
+    }
 }

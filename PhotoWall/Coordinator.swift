@@ -14,6 +14,7 @@ class Coordinator: NSObject {
     
     let navController: UINavigationController
     let appConfig: AppConfig
+    let appSettings: AppSettings
     
     var googleAuthService: GoogleAuthService!
     var locationService: LocationService!
@@ -23,6 +24,7 @@ class Coordinator: NSObject {
     init(navController: UINavigationController) {
         self.navController = navController
         self.appConfig = AppConfigLoader().load()
+        self.appSettings = AppSettings()
         super.init()
         self.googleAuthService = GoogleAuthService(
             clientId: appConfig.googleClientId,
@@ -31,7 +33,11 @@ class Coordinator: NSObject {
             webClientSecret: appConfig.googleWebClientSecret,
             delegate: self
         )
-        self.locationService = LocationClient(baseUrl: appConfig.baseUrl, authProvider: googleAuthService)
+        if appSettings.conferenceModeEnabled() {
+            self.locationService = ConferenceLocationClient(country: "Singapore", office: "Cloud Expo Asia")
+        } else {
+            self.locationService = LocationClient(baseUrl: appConfig.baseUrl, authProvider: googleAuthService)
+        }
     }
     
     func start() {
@@ -44,8 +50,11 @@ class Coordinator: NSObject {
     }
     
     func displayLocationList() {
+        guard !appSettings.conferenceModeEnabled() else {
+            return
+        }
         let controller = LocationListController.new(locationService: locationService, delegate: self)
-        self.navController.present(controller, animated: true)
+        self.navController.pushViewController(controller, animated: true)
     }
     
     func displayLoadingLocation(location: Location) {
@@ -165,9 +174,7 @@ extension Coordinator: LocationListDelegate {
     
     func locationSelected(location: Location) {
         print("Location selected:", location.country, location.office)
-        self.navController.dismiss(animated: true) {
-            self.displayLoadingLocation(location: location)
-        }
+        self.displayLoadingLocation(location: location)
     }
 }
 

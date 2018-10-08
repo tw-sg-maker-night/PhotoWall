@@ -38,22 +38,18 @@ class PhotoWallController: UIViewController, ARSCNViewDelegate {
     }
     
     @IBAction func libraryClicked() {
-        sceneView.session.pause()
         delegate?.displayLibrary()
     }
     
     @IBAction func addClicked() {
-        sceneView.session.pause()
         delegate?.displayCamera()
     }
     
     @IBAction func locationClicked() {
-        sceneView.session.pause()
         delegate?.displayLocationList()        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        sceneView.session.pause()
         if let cameraController = segue.destination as? CameraController {
             cameraController.assetIdentifier = UUID().uuidString
         }
