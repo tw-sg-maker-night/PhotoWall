@@ -27,7 +27,8 @@ class AppConfigLoader {
             googleScopes: getKey("GoogleScopes")!,
             googleWebClientId: getKey("GoogleClientID")!,
             googleWebClientSecret: getKey("GoogleClientID")!,
-            baseUrl: URL(string: getKey("BaseURL")!)!
+            baseUrl: URL(string: getKey("BaseURL")!)!,
+            hockeyAppIdentifier: getKey("HockeyAppIdentifier")!
         )
     }
     

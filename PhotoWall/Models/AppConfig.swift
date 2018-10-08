@@ -19,4 +19,6 @@ struct AppConfig {
     let googleWebClientSecret: String
     
     let baseUrl: URL
+    
+    let hockeyAppIdentifier: String
 }

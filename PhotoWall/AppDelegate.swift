@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var appConfig: AppConfig!
     var coordinator: Coordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        appConfig = AppConfigLoader().load()
+        
+        BITHockeyManager.shared().configure(withIdentifier: appConfig.hockeyAppIdentifier)
+        BITHockeyManager.shared().start()
+        
         startApp()
         return true
     }
@@ -23,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navController = UINavigationController(rootViewController: UIViewController())
         navController.navigationBar.barStyle = .default
         navController.navigationBar.barTintColor = .white
-        self.coordinator = Coordinator(navController: navController)
+        self.coordinator = Coordinator(navController: navController, appConfig: appConfig)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()

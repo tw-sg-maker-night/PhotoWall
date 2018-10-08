@@ -21,9 +21,9 @@ class Coordinator: NSObject {
         
     var assetStore: AssetStore?
     
-    init(navController: UINavigationController) {
+    init(navController: UINavigationController, appConfig: AppConfig) {
         self.navController = navController
-        self.appConfig = AppConfigLoader().load()
+        self.appConfig = appConfig
         self.appSettings = AppSettings()
         super.init()
         self.googleAuthService = GoogleAuthService(

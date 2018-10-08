@@ -18,6 +18,7 @@ target 'PhotoWall' do
   pod 'GoogleSignIn'
   # Note: Using a specific commit form PKHUD until they release 5.2 which should support Swift 4.2
   pod 'PKHUD', :git => 'https://github.com/pkluz/PKHUD.git', :commit => 'f80fac74f0'
+  pod 'HockeySDK', :subspecs => ['CrashOnlyLib']
 
   target 'PhotoWallTests' do
     inherit! :search_paths

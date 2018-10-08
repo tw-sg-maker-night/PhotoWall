@@ -23,7 +23,11 @@ platform :ios do
   desc "Build the app"
   lane :beta do
     build_app
-    hockey(api_token: "<hockey app api token>")
+    hockey(
+      api_token: "<hockey app api token>",
+      release_type: '3',
+      ipa: './build/PhotoWall.ipa'
+    )
   end
 
   desc "Runs all the tests"
@@ -34,9 +38,7 @@ platform :ios do
   desc "Register new device"
   lane :add_device do
     register_devices(
-      devices: { '<device name>' => '<device identifier>' },
-      team_id: 'LL62P32G5C',
-      username: 'charris@thoughtworks.com'
+      devices: { '<device name>' => '<device identifier>' }
     )
   end
 end
