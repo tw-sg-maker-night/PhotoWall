@@ -1,5 +1,5 @@
 //
-//  ConferenceLocationClient.swift
+//  EventLocationClient.swift
 //  PhotoWall
 //
 //  Created by Colin Harris on 10/8/18.
@@ -9,7 +9,7 @@
 import Foundation
 import PromiseKit
 
-class ConferenceLocationClient {
+class EventLocationClient {
     
     let country: Country
     let location: Location
@@ -20,7 +20,7 @@ class ConferenceLocationClient {
     }
 }
 
-extension ConferenceLocationClient: LocationService {
+extension EventLocationClient: LocationService {
     
     func fetchAllLocations() -> Promise<[Country]> {
         return Promise.value([country])

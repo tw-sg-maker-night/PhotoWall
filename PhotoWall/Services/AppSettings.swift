@@ -9,20 +9,31 @@
 import Foundation
 
 protocol AppSettingsProtocol {
-    func conferenceModeEnabled() -> Bool
+    func eventModeEnabled() -> Bool
     func setVersionAndBuildNumber()
 }
 
 class AppSettings: AppSettingsProtocol {
     
     private struct Keys {
-        static let ConferenceModeKey = "conference_mode"
         static let AppVersionKey = "app_version"
         static let BuildNumberKey = "build_number"
+        
+        static let EventModeKey = "event_mode"
+        static let EventCountryKey = "event_country"
+        static let EventNameKey = "event_name"
     }
     
-    func conferenceModeEnabled() -> Bool {
-        return UserDefaults.standard.bool(forKey: Keys.ConferenceModeKey)
+    func eventModeEnabled() -> Bool {
+        return UserDefaults.standard.bool(forKey: Keys.EventModeKey)
+    }
+    
+    func eventCountry() -> String? {
+        return UserDefaults.standard.string(forKey: Keys.EventCountryKey)
+    }
+    
+    func eventName() -> String? {
+        return UserDefaults.standard.string(forKey: Keys.EventNameKey)
     }
     
     func setVersionAndBuildNumber() {

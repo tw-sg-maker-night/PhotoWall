@@ -33,8 +33,8 @@ class Coordinator: NSObject {
             webClientSecret: appConfig.googleWebClientSecret,
             delegate: self
         )
-        if appSettings.conferenceModeEnabled() {
-            self.locationService = ConferenceLocationClient(country: "Singapore", office: "Cloud Expo Asia")
+        if appSettings.eventModeEnabled(), let eventCountry = appSettings.eventCountry(), let eventName = appSettings.eventName() {
+            self.locationService = EventLocationClient(country: eventCountry, office: eventName)
         } else {
             self.locationService = LocationClient(baseUrl: appConfig.baseUrl, authProvider: googleAuthService)
         }
@@ -50,7 +50,7 @@ class Coordinator: NSObject {
     }
     
     func displayLocationList() {
-        guard !appSettings.conferenceModeEnabled() else {
+        guard !appSettings.eventModeEnabled() else {
             return
         }
         let controller = LocationListController.new(locationService: locationService, delegate: self)

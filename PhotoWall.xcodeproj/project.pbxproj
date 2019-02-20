@@ -47,7 +47,7 @@
 		EFA900E320E3AFF90033B63B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E220E3AFF90033B63B /* Assets.xcassets */; };
 		EFA900E620E3AFF90033B63B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA900E420E3AFF90033B63B /* LaunchScreen.storyboard */; };
 		EFA900F120E3AFFA0033B63B /* PhotoWallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */; };
-		EFBDBF05216B9CC800E9B67D /* ConferenceLocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBDBF04216B9CC800E9B67D /* ConferenceLocationClient.swift */; };
+		EFBDBF05216B9CC800E9B67D /* EventLocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBDBF04216B9CC800E9B67D /* EventLocationClient.swift */; };
 		EFBDBF07216BA18C00E9B67D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EFBDBF06216BA18C00E9B67D /* Settings.bundle */; };
 		EFBDBF09216BA32800E9B67D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBDBF08216BA32800E9B67D /* AppSettings.swift */; };
 /* End PBXBuildFile section */
@@ -113,7 +113,7 @@
 		EFA900EC20E3AFF90033B63B /* PhotoWallTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoWallTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA900F020E3AFFA0033B63B /* PhotoWallTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWallTests.swift; sourceTree = "<group>"; };
 		EFA900F220E3AFFA0033B63B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFBDBF04216B9CC800E9B67D /* ConferenceLocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceLocationClient.swift; sourceTree = "<group>"; };
+		EFBDBF04216B9CC800E9B67D /* EventLocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLocationClient.swift; sourceTree = "<group>"; };
 		EFBDBF06216BA18C00E9B67D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		EFBDBF08216BA32800E9B67D /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		F692AE28ADA68EEA86F90634 /* Pods_PhotoWall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoWall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,7 +190,7 @@
 				EFA88E5D215A69D900BDA5A9 /* BaseService.swift */,
 				EFA88E69215A6D1000BDA5A9 /* AuthProvider.swift */,
 				EFA88E6B215A801F00BDA5A9 /* GoogleAuthService.swift */,
-				EFBDBF04216B9CC800E9B67D /* ConferenceLocationClient.swift */,
+				EFBDBF04216B9CC800E9B67D /* EventLocationClient.swift */,
 				EFBDBF08216BA32800E9B67D /* AppSettings.swift */,
 			);
 			path = Services;
@@ -519,7 +519,7 @@
 				EF12C5462136E98E0056406F /* ARButton.swift in Sources */,
 				EF24FF00211C43CD0069F83A /* LocalAssetStore.swift in Sources */,
 				EF24FEEA211BC1D10069F83A /* WallAsset.swift in Sources */,
-				EFBDBF05216B9CC800E9B67D /* ConferenceLocationClient.swift in Sources */,
+				EFBDBF05216B9CC800E9B67D /* EventLocationClient.swift in Sources */,
 				EF12C54A2136F4050056406F /* AssetController.swift in Sources */,
 				EFA88E5B215A688200BDA5A9 /* Location.swift in Sources */,
 				EF3F6A362125CCA200498C00 /* AssetCell.swift in Sources */,

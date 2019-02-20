@@ -10,11 +10,27 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Conference Mode</string>
+			<string>Event Mode</string>
 			<key>Key</key>
-			<string>conference_mode</string>
+			<string>event_mode</string>
 			<key>DefaultValue</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Event Country</string>
+			<key>Key</key>
+			<string>event_country</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Event Name</string>
+			<key>Key</key>
+			<string>event_name</string>
 		</dict>
 		<dict>
 			<key>Type</key>
